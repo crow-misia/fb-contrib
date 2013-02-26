@@ -46,6 +46,7 @@ public class PossiblyRedundantMethodCalls extends BytecodeScanningDetector
 {
     public static final String PRMC_RISKY_FIELD_USER_KEY = "fbcontrib.PRMC.riskynames";
     public static final String PRMC_RISKY_CLASS_USER_KEY = "fbcontrib.PRMC.riskyclasses";
+    public static final String PRMC_RISKY_METHOD_USER_KEY = "fbcontrib.PRMC.riskymethods";
     public static final String PRMC_HIGH_BYTECOUNT = "fbcontrib.PRMC.highbytecount";
     public static final String PRMC_HIGH_METHODCALLS = "fbcontrib.PRMC.highmethodcalls";
     public static final String PRMC_NORMAL_BYTECOUNT = "fbcontrib.PRMC.normalbytecount";
@@ -116,6 +117,22 @@ public class PossiblyRedundantMethodCalls extends BytecodeScanningDetector
 			}
         }
     }
+
+	private static Set<String> riskyMethodNames = new HashSet<String>();
+	static {
+		riskyMethodNames.add("java/util/Collections:emptySet");
+		riskyMethodNames.add("java/util/Collections:emptyList");
+		riskyMethodNames.add("java/util/Collections:emptyMap");
+		riskyMethodNames.add("java/util/Collections:reverseOrder");
+
+		String userNameProp = System.getProperty(PRMC_RISKY_METHOD_USER_KEY);
+		if (userNameProp != null) {
+			String[] userNames = userNameProp.split("\\s*,\\s*");
+			for (String name : userNames) {
+				riskyMethodNames.add(name);
+			}
+		}
+	}
 
 	private final BugReporter bugReporter;
 	private OpcodeStack stack = null;
@@ -269,7 +286,7 @@ public class PossiblyRedundantMethodCalls extends BytecodeScanningDetector
 
 	                String methodName = getNameConstantOperand();
 					if (mc != null) {
-						if (!signature.endsWith("V") && methodName.equals(mc.getName()) && signature.equals(mc.getSignature()) && !isRiskyName(className, methodName)) {
+						if (!signature.endsWith("V") && methodName.equals(mc.getName()) && signature.equals(mc.getSignature()) && !isRiskyName(className, methodName, parmCount)) {
 							Object[] parms = mc.getParms();
 							if (Arrays.equals(parms, parmConstants)) {
 								Statistics statistics = Statistics.getStatistics();
@@ -341,9 +358,10 @@ public class PossiblyRedundantMethodCalls extends BytecodeScanningDetector
 	 *
      * @param className the class name to check
 	 * @param methodName the method name to check
+	 * @param parmCount the parameter count to check
 	 * @return whether the method sounds like it modifies this
 	 */
-	private boolean isRiskyName(String className, String methodName) {
+	private static boolean isRiskyName(final String className, final String methodName, final int parmCount) {
         if (riskyClassNames.contains(className)) {
 			return true;
 		}
@@ -352,6 +370,11 @@ public class PossiblyRedundantMethodCalls extends BytecodeScanningDetector
 			if (methodName.indexOf(riskyName) >= 0) {
 				return true;
 			}
+		}
+
+		if (parmCount == 0) {
+			final String key = className + ":" + methodName;
+			return riskyMethodNames.contains(key);
 		}
 		return false;
 	}
