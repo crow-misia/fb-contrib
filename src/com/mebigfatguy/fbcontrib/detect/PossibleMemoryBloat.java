@@ -62,6 +62,7 @@ public class PossibleMemoryBloat extends BytecodeScanningDetector
 		bloatableSigs.add("Ljava/util/SortedSet;");
 		bloatableSigs.add("Ljava/util/SortedMap;");
 		bloatableSigs.add("Ljava/util/Stack;");
+		bloatableSigs.add("Ljava/util/Queue;");
 		bloatableSigs.add("Ljava/lang/StringBuffer;");
 		bloatableSigs.add("Ljava/lang/StringBuilder;");
 		bloatableSigs.add("Ljava/util/TreeMap;");
