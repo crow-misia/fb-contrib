@@ -35,7 +35,7 @@ import edu.umd.cs.findbugs.ba.ClassContext;
  */
 public class SideEffectConstructor extends BytecodeScanningDetector {
 
-	private enum State {SAW_NOTHING, SAW_CTOR};
+	private enum State {SAW_NOTHING, SAW_CTOR}
 	private final BugReporter bugReporter;
 	private OpcodeStack stack;
 	private State state;

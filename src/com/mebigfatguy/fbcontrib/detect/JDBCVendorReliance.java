@@ -78,11 +78,12 @@ public class JDBCVendorReliance extends BytecodeScanningDetector
 		int[] parmRegs = RegisterUtils.getParameterRegisters(obj);
 		Type[] argTypes = obj.getArgumentTypes();
 		
-		for (int t = 0; t < argTypes.length; t++) {
+		for (int t = 0, n = argTypes.length; t < n; t++) {
 			String sig = argTypes[t].getSignature();
 			if (isJDBCClass(sig)) {
-				jdbcLocals.put(Integer.valueOf(parmRegs[t]), 
-						Integer.valueOf(RegisterUtils.getLocalVariableEndRange(obj.getLocalVariableTable(), parmRegs[t], 0)));
+				final int reg = parmRegs[t];
+				jdbcLocals.put(Integer.valueOf(reg), 
+						Integer.valueOf(RegisterUtils.getLocalVariableEndRange(obj.getLocalVariableTable(), reg, 0)));
 			}	
 		}
 	}
@@ -163,7 +164,7 @@ public class JDBCVendorReliance extends BytecodeScanningDetector
      * 
      * @return if the class name is a jdbc one
      */
-    private boolean isJDBCClass(String clsName) {
+    private static boolean isJDBCClass(String clsName) {
         if (clsName.endsWith(";"))
             clsName = clsName.substring(1, clsName.length() - 1);
         clsName = clsName.replace('.', '/');

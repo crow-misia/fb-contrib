@@ -214,6 +214,8 @@ public class UseSplit extends BytecodeScanningDetector
 					}
 					state = State.SEEN_NOTHING;
 				break;
+			default:
+				break;
 			}
 		} finally {
 			TernaryPatcher.pre(stack, seen);
