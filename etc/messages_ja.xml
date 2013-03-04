@@ -1241,6 +1241,7 @@
 
 			Comparing class name ignores the class loader.
 			</p>
+			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
 	</Detector>
@@ -1252,6 +1253,7 @@
 			classes are available in versions of the JDK 5.0 and higher, and these
 			classes should only be used if you are targeting JDK 1.4 and lower.
 			</p>
+			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
 	</Detector>
@@ -1263,6 +1265,7 @@
 			not swallow CloneNotSupportedException. Not doing so makes the clone method not as simple to use, 
 			and should be harmless to do so.
 			</p>
+			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
 	</Detector>
@@ -1274,9 +1277,23 @@
 			This does not produce a list that holds the primitive boxed values, but a list of
 			one item, the array itself.
 			</p>
+			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
 	</Detector>
+
+    <Detector class="com.mebigfatguy.fbcontrib.detect.PresizeCollections">
+            <Details>
+            <![CDATA[
+            <p> Looks for methods that create collections using the default constructor,
+            even though the number of elements that will be placed in the collection is known
+            apriori, and thus could be pre-allocated. Not doing so just causes more intermediate
+            reallocations which is unnecessary.
+            </p>
+            <p>高速ディテクタです。</p>
+            ]]>
+        </Details>
+    </Detector>
 
 	<!-- BugPattern -->
 
@@ -3415,8 +3432,8 @@
 	</BugPattern>
 
 	<BugPattern type="STB_STACKED_TRY_BLOCKS">
-		<ShortDescription>メソッドは類似の try/catch ブロックを積み上げています。</ShortDescription>
-		<LongDescription>メソッド {1} は類似の try/catch ブロックを積み上げています。</LongDescription>
+		<ShortDescription>メソッドは類似の try/catch ブロックをネストしています。</ShortDescription>
+		<LongDescription>メソッド {1} は類似の try/catch ブロックをネストしています。</LongDescription>
 		<Details>
 			<![CDATA[
 				<P>This method declares two try catch blocks one after another, where each 
@@ -3530,33 +3547,45 @@
 		</Details>
 	</BugPattern> 
 
+	<BugPattern type="PSC_PRESIZE_COLLECTIONS">
+		<ShortDescription>メソッドは Collection の明示的なサイズ指定をせず確保しています。</ShortDescription>
+		<LongDescription>メソッド {1} は Collection の明示的なサイズ指定をせず確保しています。</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>このメソッドは、予めどの程度の要素をコレクションに格納するか知っており(または、少なくとも合理的な推測)、
+			不必要にコレクションの再確保を引き起こすにも関わらず、デフォルトのコンストラクタを使用してコレクションを割り当てています。
+			</p>
+			]]>
+		</Details>
+	</BugPattern>"
+
 	<!-- BugCode -->
 
 	<BugCode abbrev="ISB">非効率な文字列バッファ</BugCode>
-	<BugCode abbrev="SCI">同期されたCollectionのIterator</BugCode>
+	<BugCode abbrev="SCI">同期されたコレクションのIterator</BugCode>
 	<BugCode abbrev="CC">循環的複雑度(Cyclomatic Complexity)</BugCode>
 	<BugCode abbrev="OCP">パラメータの具象クラスへの依存</BugCode>
 	<BugCode abbrev="LII">リストのインデックスアクセス</BugCode>
-	<BugCode abbrev="UCC">Collectionの無関係な要素</BugCode>
+	<BugCode abbrev="UCC">コレクションの無関係な要素</BugCode>
 	<BugCode abbrev="DRE">Runtime Exceptionの宣言</BugCode>
 	<BugCode abbrev="CE">クラスの依存</BugCode>
 	<BugCode abbrev="LSC">リテラル文字列の比較</BugCode>
 	<BugCode abbrev="PCOA">部分的に構築されたオブジェクトへのアクセス</BugCode>
-	<BugCode abbrev="DLC">誤った利用をされたList Collection</BugCode>
+	<BugCode abbrev="DLC">誤った利用をされたリスト・コレクション</BugCode>
 	<BugCode abbrev="PL">並列リスト</BugCode>
 	<BugCode abbrev="FP">Finalパラメータ</BugCode>
 	<BugCode abbrev="ACEM">抽象化クラス内の空メソッド</BugCode>
 	<BugCode abbrev="MAC">手動配列コピー</BugCode>
 	<BugCode abbrev="FPL">浮動小数点ループ</BugCode>
-	<BugCode abbrev="NCMU">非Collectionメソッドの使用</BugCode>
+	<BugCode abbrev="NCMU">非コレクション・メソッドの使用</BugCode>
 	<BugCode abbrev="CAO">オートボクシングされたオーバーロードを混乱</BugCode>
-	<BugCode abbrev="AFBR">Finallyブロック内での異常な戻り</BugCode>
+	<BugCode abbrev="AFBR">finallyブロック内での異常な戻り</BugCode>
 	<BugCode abbrev="SMII">静的メソッドのインスタンス呼び出し</BugCode>
 	<BugCode abbrev="STS">偽のスレッド状態</BugCode>
 	<BugCode abbrev="NAB">不必要なオートボクシング</BugCode>
 	<BugCode abbrev="USBR">リターンの前に不必要な格納</BugCode>
 	<BugCode abbrev="COM">コピーされたオーバーライドメソッド</BugCode>
-	<BugCode abbrev="ABC">配列ベースのCollection</BugCode>
+	<BugCode abbrev="ABC">配列ベースのコレクション</BugCode>
 	<BugCode abbrev="ODN">孤立したDOMノード</BugCode>
 	<BugCode abbrev="AOM">抽象的なオーバーライドされたメソッド</BugCode>
 	<BugCode abbrev="CBX">独自生成XML</BugCode>
@@ -3570,7 +3599,7 @@
 	<BugCode abbrev="SWCO">不適切な並列オブジェクト上の待機</BugCode>
 	<BugCode abbrev="JVR">JDBCベンダーリライアンス</BugCode>
 	<BugCode abbrev="PMB">使用メモリの肥大</BugCode>
-	<BugCode abbrev="LSYC">ローカル同期されたCollection</BugCode>
+	<BugCode abbrev="LSYC">ローカル同期されたコレクション</BugCode>
 	<BugCode abbrev="FCBL">ローカル変数に出来るフィールド</BugCode>
 	<BugCode abbrev="NOS">非所有同期</BugCode>
 	<BugCode abbrev="NRTL">再利用されないTaglib</BugCode>
@@ -3606,7 +3635,7 @@
 	<BugCode abbrev="SCSS">不適切なクラスタ化されたセッションサポート</BugCode>
 	<BugCode abbrev="LO">一般的でないロガー</BugCode>
 	<BugCode abbrev="IICU">誤った内部クラスの使用</BugCode>
-	<BugCode abbrev="DSOC">Collectionの怪しいSet</BugCode>
+	<BugCode abbrev="DSOC">コレクションの疑わしい格納</BugCode>
 	<BugCode abbrev="BED">偽の例外宣言</BugCode>
 	<BugCode abbrev="UNNC">不必要な新しいNullチェック</BugCode>
 	<BugCode abbrev="DTEP">廃止予定の型保証されたEnumパターン</BugCode>
@@ -3625,18 +3654,19 @@
 	<BugCode abbrev="ROOM">オブジェクトメソッドのリフレクション</BugCode>
 	<BugCode abbrev="IPU">不適切なプロパティの使用</BugCode>
 	<BugCode abbrev="PCAIL">ループ内でオブジェクトの生成</BugCode>
-	<BugCode abbrev="WOC">書き込みのみ行うCollection</BugCode>
+	<BugCode abbrev="WOC">書き込みのみ行うコレクション</BugCode>
 	<BugCode abbrev="UVA">可変引数の使用</BugCode>
 	<BugCode abbrev="PUS">思いがけず使用されたシリアライズ</BugCode>
 	<BugCode abbrev="SEC">副作用コンストラクタ</BugCode>
-	<BugCode abbrev="SGSU">不適切なGetter Setterの使用</BugCode>
+	<BugCode abbrev="SGSU">不適切なゲッター・セッターの使用</BugCode>
 	<BugCode abbrev="LGO">生き続けるグラフィックスオブジェクト</BugCode>
-	<BugCode abbrev="STB">tryブロックの積み上げ</BugCode>
+	<BugCode abbrev="STB">tryブロックのネスト</BugCode>
 	<BugCode abbrev="CEBE">Commons EqualsBuilder から Equals へ</BugCode>
 	<BugCode abbrev="CHTH">Commons HashCodeBuilder から hashCode へ</BugCode>
 	<BugCode abbrev="CSBTS">Commons ToStringBuilder から String へ</BugCode>
 	<BugCode abbrev="CCNE">クラス名の等価を比較</BugCode>
 	<BugCode abbrev="BRPI">Backport concurrentの利用</BugCode>
 	<BugCode abbrev="CU">Cloneメソッドの利便性</BugCode>
-	<BugCode abbrev="CAAL">Array asListメソッドの乱用</BugCode>
+	<BugCode abbrev="CAAL">Array.asListメソッドの乱用</BugCode>
+	<BugCode abbrev="PSC">事前サイズ決定コレクション</BugCode>
 </MessageCollection>
