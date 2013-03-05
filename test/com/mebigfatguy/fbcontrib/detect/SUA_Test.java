@@ -39,7 +39,7 @@ public class SUA_Test extends BaseFindBugsTest {
 		reporter.printResults();
 
 		expect(reporter, new TreeMap<String, Integer>() {{
-			put("SUA_SUSPICIOUS_UNINITIALIZED_ARRAY", 2);
+			put("SUA_SUSPICIOUS_UNINITIALIZED_ARRAY", 3); // Line 9 / 40 / 51 in SUA_Sample
 			put("URF_UNREAD_FIELD", 1);
 			put("USBR_UNNECESSARY_STORE_BEFORE_RETURN", 1);
 			put("UVA_USE_VAR_ARGS", 2);
