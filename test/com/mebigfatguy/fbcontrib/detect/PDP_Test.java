@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,12 +38,12 @@ public class PDP_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("BC_BAD_CAST_TO_CONCRETE_COLLECTION", 4);
 			put("BC_UNCONFIRMED_CAST", 1);
 			put("DLS_DEAD_LOCAL_STORE", 3);
 			put("LSC_LITERAL_STRING_COMPARISON", 2);
-			put("PDP_POORLY_DEFINED_PARAMETER", 3);
+			put("PDP_POORLY_DEFINED_PARAMETER", 3); // Javac is 3. Eclipse Compiler is 1.
 			put("SF_SWITCH_NO_DEFAULT", 2);
 			put("UPM_UNCALLED_PRIVATE_METHOD", 5);
 			put("URF_UNREAD_FIELD", 1);

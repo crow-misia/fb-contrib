@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class CEBE_EqualsToEqualsTest extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("CEBE_COMMONS_EQUALS_BUILDER_ISEQUALS", 1);
 			put("EQ_CHECK_FOR_OPERAND_NOT_COMPATIBLE_WITH_THIS", 1);
 		}});
