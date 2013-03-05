@@ -26,19 +26,17 @@ import org.apache.bcel.classfile.Method;
 
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
-import edu.umd.cs.findbugs.BytecodeScanningDetector;
 import edu.umd.cs.findbugs.OpcodeStack;
-import edu.umd.cs.findbugs.ba.ClassContext;
+import edu.umd.cs.findbugs.bcel.OpcodeStackDetector;
 
 /**
  * looks for methods that compare strings against literal strings, where the literal string
  * is passed as the parameter. If the .equals or .compareTo is called on the literal itself, passing
  * the variable as the parameter, you avoid the possibility of a NullPointerException.
  */
-public class LiteralStringComparison extends BytecodeScanningDetector
+public class LiteralStringComparison extends OpcodeStackDetector
 {
 	private BugReporter bugReporter;
-	private OpcodeStack stack;
 	
 	/**
      * constructs a LSC detector given the reporter to report bugs on
@@ -48,21 +46,6 @@ public class LiteralStringComparison extends BytecodeScanningDetector
 		this.bugReporter = bugReporter;		
 	}
 
-	/**
-	 * implements the visitor to create and clear the stack
-	 * 
-	 * @param classContext the context object for the currently parsed class
-	 */
-	@Override
-	public void visitClassContext(ClassContext classContext) {
-		try {
-			stack = new OpcodeStack();
-			super.visitClassContext(classContext);
-		} finally {
-			stack = null;
-		}
-	}
-	
 	/**
 	 * looks for methods that contain a LDC or LDC_W opcodes
 	 * 
@@ -80,10 +63,9 @@ public class LiteralStringComparison extends BytecodeScanningDetector
 	 * @param obj the code object for the currently parsed method
 	 */
 	@Override
-	public void visitCode(final Code obj) {
+	public void visit(final Code obj) {
 		if (prescreen(getMethod())) {
-			stack.resetForMethodEntry(this);
-			super.visitCode(obj);
+			super.visit(obj);
 		}
 	}
 	
@@ -94,31 +76,25 @@ public class LiteralStringComparison extends BytecodeScanningDetector
 	 */
 	@Override
 	public void sawOpcode(final int seen) {
-		try {
-			stack.mergeJumps(this);
+		if ((seen == INVOKEVIRTUAL) && "java/lang/String".equals(getClassConstantOperand())) {
+			String calledMethodName = getNameConstantOperand();
+			String calledMethodSig = getSigConstantOperand();
 			
-			if ((seen == INVOKEVIRTUAL) && "java/lang/String".equals(getClassConstantOperand())) {
-				String calledMethodName = getNameConstantOperand();
-				String calledMethodSig = getSigConstantOperand();
-				
-				if (("equals".equals(calledMethodName) && "(Ljava/lang/Object;)Z".equals(calledMethodSig))
-				||  ("compareTo".equals(calledMethodName) && "(Ljava/lang/String;)I".equals(calledMethodSig))
-                ||  ("equalsIgnoreCase".equals(calledMethodName) && "(Ljava/lang/String;)Z".equals(calledMethodSig))) {
-                    
-					if (stack.getStackDepth() > 0) {
-						OpcodeStack.Item itm = stack.getStackItem(0);
-						Object constant = itm.getConstant();
-						if ((constant != null) && constant.getClass().equals(String.class)) {
-							bugReporter.reportBug( new BugInstance( this, "LSC_LITERAL_STRING_COMPARISON", LOW_PRIORITY)
-								.addClass(this)
-								.addMethod(this)
-								.addSourceLine(this));
-						}
+			if (("equals".equals(calledMethodName) && "(Ljava/lang/Object;)Z".equals(calledMethodSig))
+			||  ("compareTo".equals(calledMethodName) && "(Ljava/lang/String;)I".equals(calledMethodSig))
+            ||  ("equalsIgnoreCase".equals(calledMethodName) && "(Ljava/lang/String;)Z".equals(calledMethodSig))) {
+                
+				if (stack.getStackDepth() > 0) {
+					OpcodeStack.Item itm = stack.getStackItem(0);
+					Object constant = itm.getConstant();
+					if ((constant != null) && constant.getClass().equals(String.class)) {
+						bugReporter.reportBug( new BugInstance( this, "LSC_LITERAL_STRING_COMPARISON", LOW_PRIORITY)
+							.addClass(this)
+							.addMethod(this)
+							.addSourceLine(this));
 					}
-				}						
-			}
-		} finally {
-			stack.sawOpcode(this, seen);
+				}
+			}						
 		}
 	}
 
