@@ -87,7 +87,7 @@ public final class EasyBugReporter extends SortingBugReporter {
 		if (error.getException() != null) {
 			log.log(Level.SEVERE, "Report Analysis Error" + error.getException().getMessage() + "\n", error.getException());
 		} else {
-			log.log(Level.SEVERE, "Report Analysis Error\n" + error.getMessage());
+			log.log(Level.SEVERE, "Report Analysis Error", error);
 		}
 	}
 

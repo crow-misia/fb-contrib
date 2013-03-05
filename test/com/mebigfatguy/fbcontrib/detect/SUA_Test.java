@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class SUA_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("SUA_SUSPICIOUS_UNINITIALIZED_ARRAY", 2);
 			put("URF_UNREAD_FIELD", 1);
 			put("USBR_UNNECESSARY_STORE_BEFORE_RETURN", 1);

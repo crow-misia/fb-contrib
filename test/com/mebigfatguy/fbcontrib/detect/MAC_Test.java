@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class MAC_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("CLI_CONSTANT_LIST_INDEX", 1);
 			put("LSC_LITERAL_STRING_COMPARISON", 1);
 			put("MAC_MANUAL_ARRAY_COPY", 1);

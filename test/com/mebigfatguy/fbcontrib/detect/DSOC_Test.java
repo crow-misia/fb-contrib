@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class DSOC_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("DSOC_DUBIOUS_SET_OF_COLLECTIONS", 1);
 			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 3);
 		}});

@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class AWCBR_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE", 2);
 			put("USBR_UNNECESSARY_STORE_BEFORE_RETURN", 3);
 			put("UVA_USE_VAR_ARGS", 1);

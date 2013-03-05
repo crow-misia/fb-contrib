@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -41,7 +41,7 @@ public class JVR_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("JVR_JDBC_VENDOR_RELIANCE", 1);
 			put("PZLA_PREFER_ZERO_LENGTH_ARRAYS", 1);
 		}});

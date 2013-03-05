@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class ABC_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("ABC_ARRAY_BASED_COLLECTIONS", 3);
 			put("SIC_INNER_SHOULD_BE_STATIC_ANON", 1);
 			put("UVA_USE_VAR_ARGS", 2);

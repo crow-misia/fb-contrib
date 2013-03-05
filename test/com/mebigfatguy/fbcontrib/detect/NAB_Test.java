@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class NAB_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("BX_BOXING_IMMEDIATELY_UNBOXED", 7);
 			put("BX_BOXING_IMMEDIATELY_UNBOXED_TO_PERFORM_COERCION", 15);
 			put("BX_UNBOXING_IMMEDIATELY_REBOXED", 8);

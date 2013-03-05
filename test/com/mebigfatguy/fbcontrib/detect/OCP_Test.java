@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -41,7 +41,7 @@ public class OCP_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("DLS_DEAD_LOCAL_STORE", 1);
 			put("LSYC_LOCAL_SYNCHRONIZED_COLLECTION", 1);
 			put("OCP_OVERLY_CONCRETE_PARAMETER", 2);

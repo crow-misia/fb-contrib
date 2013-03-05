@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class UNNC_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE", 6);
 			put("UNNC_UNNECESSARY_NEW_NULL_CHECK", 6);
 			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 1);

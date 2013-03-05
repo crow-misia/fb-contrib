@@ -18,7 +18,7 @@
 package com.mebigfatguy.fbcontrib.detect;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import jp.co.minori.findbugs.utils.BaseFindBugsTest;
 import jp.co.minori.findbugs.utils.EasyBugReporter;
@@ -38,7 +38,7 @@ public class SWCO_Test extends BaseFindBugsTest {
 
 		reporter.printResults();
 
-		expect(reporter, new HashMap<String, Integer>() {{
+		expect(reporter, new TreeMap<String, Integer>() {{
 			put("JML_JSR166_CALLING_WAIT_RATHER_THAN_AWAIT", 1);
 			put("MDM_WAIT_WITHOUT_TIMEOUT", 2);
 			put("SWCO_SUSPICIOUS_WAIT_ON_CONCURRENT_OBJECT", 2);
