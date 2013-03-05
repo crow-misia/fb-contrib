@@ -111,4 +111,18 @@ public class MRC_Sample
         }
         return index;
     }
+    
+    public int findIndex() {
+        boolean matches = true;
+        int[] data = new int[] { 0, 1, 2, 3, 4, 5, };
+        for (int i = 0; i < data.length; i++) {
+            if (i != data[i]) {
+                matches = false;
+            }
+            if (matches) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

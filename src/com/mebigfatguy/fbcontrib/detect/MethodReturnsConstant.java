@@ -29,18 +29,17 @@ import com.mebigfatguy.fbcontrib.utils.TernaryPatcher;
 
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
-import edu.umd.cs.findbugs.BytecodeScanningDetector;
 import edu.umd.cs.findbugs.OpcodeStack;
 import edu.umd.cs.findbugs.ba.ClassContext;
+import edu.umd.cs.findbugs.bcel.OpcodeStackDetector;
 
 /**
  * looks for private methods that can only return one constant value.
  * either the class should not return a value, or perhaps a branch was missed.
  */
-public class MethodReturnsConstant extends BytecodeScanningDetector
+public class MethodReturnsConstant extends OpcodeStackDetector
 {
 	private final BugReporter bugReporter;
-	private OpcodeStack stack;
 	private int returnRegister;
 	private Map<Integer, Object> registerConstants;
 	private Object returnConstant;
@@ -58,11 +57,9 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 	@Override
 	public void visitClassContext(ClassContext classContext) {
 		try {
-			stack = new OpcodeStack();
 			registerConstants = new HashMap<Integer, Object>();
 			super.visitClassContext(classContext);
 		} finally {
-			stack = null;
 			registerConstants = null;
 		}
 	}
@@ -73,7 +70,7 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 	 * @param obj the context object of the currently parsed code block
 	 */
 	@Override
-	public void visitCode(Code obj) {
+	public void visit(Code obj) {
 		Method m = getMethod();
 		int aFlags = m.getAccessFlags();
 		if ((((aFlags & Constants.ACC_PRIVATE) != 0) || ((aFlags & Constants.ACC_STATIC) != 0))
@@ -85,7 +82,7 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 			registerConstants.clear();
 			methodSuspect = true;
 			returnPC = -1;
-			super.visitCode(obj);
+			super.visit(obj);
 			if (methodSuspect && (returnConstant != null)) {
 				BugInstance bi = new BugInstance(this, "MRC_METHOD_RETURNS_CONSTANT", ((aFlags & Constants.ACC_PRIVATE) != 0) ? NORMAL_PRIORITY : LOW_PRIORITY)
 									.addClass(this)
@@ -117,7 +114,7 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 				if (stack.getStackDepth() > 0) {
 					OpcodeStack.Item item = stack.getStackItem(0);
 
-					int register = item.getRegisterNumber();
+					final Integer register = Integer.valueOf(item.getRegisterNumber());
 					if (registerConstants.containsKey(register) && (registerConstants.get(register) == null)) {
                         methodSuspect = false;
                         return;
@@ -139,6 +136,7 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 
 					returnRegister = item.getRegisterNumber();
 					returnConstant = constant;
+					returnPC = getPC();
 				}
 			} else if ((seen == GOTO) || (seen == GOTO_W)) {
 				if (stack.getStackDepth() > 0) {
@@ -151,6 +149,7 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 				}
 			} else if ((seen >= ISTORE) && (seen <= ASTORE_3) || (seen == IINC)) {
 			    int register = getRegisterOperand();
+			    final Integer registerObj = Integer.valueOf(register);
 			    if ((returnRegister != -1) && (register == returnRegister)) {
 			        methodSuspect = false;
 			    }
@@ -158,19 +157,19 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 			    if (stack.getStackDepth() > 0) {
 			        OpcodeStack.Item item = stack.getStackItem(0);
 			        Object constant = item.getConstant();
-			        if (registerConstants.containsKey(register)) {
-			            if ((constant == null) || !constant.equals(registerConstants.get(register))) {
-			                registerConstants.put(register, null);
+			        if (registerConstants.containsKey(registerObj)) {
+			            if ((constant == null) || !constant.equals(registerConstants.get(registerObj))) {
+			                registerConstants.put(registerObj, null);
 			            }
 			        } else {
-			            registerConstants.put(register, constant);
+			            registerConstants.put(registerObj, constant);
 			        }
 			    } else {
-			        registerConstants.put(register, null);
+			        registerConstants.put(registerObj, null);
 			    }
 
 			    if (returnRegister == register) {
-			        Object constant = registerConstants.get(returnRegister);
+			        Object constant = registerConstants.get(registerObj);
 			        if (constant != null) {
 			            methodSuspect = false;
 			        }
@@ -187,5 +186,9 @@ public class MethodReturnsConstant extends BytecodeScanningDetector
 				item.setUserValue(Boolean.TRUE);
 			}
 		}
+	}
+
+	public void afterOpcode(final int seen) {
+		// do nothing.
 	}
 }
