@@ -29,20 +29,19 @@ import org.apache.bcel.classfile.JavaClass;
 
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
-import edu.umd.cs.findbugs.BytecodeScanningDetector;
 import edu.umd.cs.findbugs.OpcodeStack;
 import edu.umd.cs.findbugs.ba.ClassContext;
 import edu.umd.cs.findbugs.ba.XField;
+import edu.umd.cs.findbugs.bcel.OpcodeStackDetector;
 
 /**
  * looks for classes that maintain two or more lists or arrays associated one-for-one through the same index
  * to hold two or more pieces of related information. It would be better to create a new class that holds
  * all of these pieces of information, and place instances of this class in one list.
  */
-public class ParallelLists extends BytecodeScanningDetector
+public class ParallelLists extends OpcodeStackDetector
 {
 	private BugReporter bugReporter;
-	private OpcodeStack stack;
 	private Set<String> listFields;
 	private Map<Integer, String> indexToFieldMap;
 	
@@ -73,48 +72,39 @@ public class ParallelLists extends BytecodeScanningDetector
 			}
 			
 			if (listFields.size() > 0) {
-				stack = new OpcodeStack();
 				indexToFieldMap = new HashMap<Integer, String>();
 				super.visitClassContext(classContext);
 			}
 		} finally {
-			stack = null;
 			indexToFieldMap = null;
 		}
 	}
 	
 	@Override
-	public void visitCode(final Code obj) {
-		stack.resetForMethodEntry(this);
+	public void visit(final Code obj) {
 		indexToFieldMap.clear();
-		super.visitCode(obj);
+		super.visit(obj);
 	}
 	
 	@Override
 	public void sawOpcode(final int seen) {
-		try {
-			stack.mergeJumps(this);
+		if (seen == INVOKEINTERFACE) {
+			String className = getClassConstantOperand();
+			String methodName = getNameConstantOperand();
+			String methodSig = getSigConstantOperand();
 			
-			if (seen == INVOKEINTERFACE) {
-				String className = getClassConstantOperand();
-				String methodName = getNameConstantOperand();
-				String methodSig = getSigConstantOperand();
-				
-				if ("java/util/List".equals(className) 
-				&&  "get".equals(methodName)
-				&&  "(I)Ljava/lang/Object;".equals(methodSig)) {
-					checkParms();
-				}
-			} else if ((seen >= IFEQ) && (seen <= RETURN)) {
-				indexToFieldMap.clear();
-			} else if ((seen == ISTORE) || (seen == IINC) || ((seen >= ISTORE_0) && (seen <= ISTORE_3))) {
-				int reg = getIntOpRegister(seen);
-				indexToFieldMap.remove(Integer.valueOf(reg));
-			} else if ((seen >=  IALOAD) && (seen <= SALOAD)) {
+			if ("java/util/List".equals(className) 
+			&&  "get".equals(methodName)
+			&&  "(I)Ljava/lang/Object;".equals(methodSig)) {
 				checkParms();
 			}
-		} finally {
-			stack.sawOpcode(this, seen);
+		} else if ((seen >= IFEQ) && (seen <= RETURN)) {
+			indexToFieldMap.clear();
+		} else if ((seen == ISTORE) || (seen == IINC) || ((seen >= ISTORE_0) && (seen <= ISTORE_3))) {
+			int reg = getIntOpRegister(seen);
+			indexToFieldMap.remove(Integer.valueOf(reg));
+		} else if ((seen >=  IALOAD) && (seen <= SALOAD)) {
+			checkParms();
 		}
 	}
 	
