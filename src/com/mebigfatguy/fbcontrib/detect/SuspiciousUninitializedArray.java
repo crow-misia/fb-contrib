@@ -29,20 +29,19 @@ import com.mebigfatguy.fbcontrib.utils.TernaryPatcher;
 
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
-import edu.umd.cs.findbugs.BytecodeScanningDetector;
 import edu.umd.cs.findbugs.OpcodeStack;
 import edu.umd.cs.findbugs.ba.ClassContext;
+import edu.umd.cs.findbugs.bcel.OpcodeStackDetector;
 
 /**
  * looks for creation of arrays, that are not populated before being returned
  * for a method. While it is possible that the method that called this method
  * will do the work of populated the array, it seems odd that this would be the case.
  */
-public class SuspiciousUninitializedArray extends BytecodeScanningDetector
+public class SuspiciousUninitializedArray extends OpcodeStackDetector
 {
 	private static final String UNINIT_ARRAY = "Unitialized Array";
 	private final BugReporter bugReporter;
-	private OpcodeStack stack;
 	private String returnArraySig;
 	private BitSet uninitializedRegs;
 
@@ -62,11 +61,9 @@ public class SuspiciousUninitializedArray extends BytecodeScanningDetector
 	@Override
 	public void visitClassContext(ClassContext classContext) {
 		try {
-			stack = new OpcodeStack();
 			uninitializedRegs = new BitSet();
 			super.visitClassContext(classContext);
 		} finally {
-			stack = null;
 			uninitializedRegs = null;
 		}
 	}
@@ -78,14 +75,13 @@ public class SuspiciousUninitializedArray extends BytecodeScanningDetector
 	 * @param obj the context object for the currently parsed code block
 	 */
 	@Override
-	public void visitCode(Code obj) {
+	public void visit(Code obj) {
 		String sig = getMethod().getSignature();
 		int sigPos = sig.indexOf(")[");
 		if (sigPos >= 0) {
-			stack.resetForMethodEntry(this);
 			returnArraySig = sig.substring(sigPos + 1);
 			uninitializedRegs.clear();
-			super.visitCode(obj);
+			super.visit(obj);
 		}
 	}
 
@@ -260,6 +256,11 @@ public class SuspiciousUninitializedArray extends BytecodeScanningDetector
 				item.setUserValue(userValue);
 			}
 		}
+	}
+
+	@Override
+	public void afterOpcode(final int seen) {
+		// do nothing.
 	}
 	
 	private boolean isTOS0() {
