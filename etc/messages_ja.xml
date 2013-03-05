@@ -1310,7 +1310,7 @@
 	</BugPattern>
 
 	<BugPattern type="ISB_EMPTY_STRING_APPENDING">
-		<ShortDescription>メソッドは型変換を行うために空の文字列を結合しています。</ShortDescription>
+		<ShortDescription>メソッドは 型変換を行うために空の文字列を結合しています。</ShortDescription>
 		<LongDescription>メソッド {1} は型変換を行うために空の文字列を結合しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1323,7 +1323,7 @@
 	</BugPattern>
 
 	<BugPattern type="SCI_SYNCHRONIZED_COLLECTION_ITERATORS">
-		<ShortDescription>メソッドは同期コレクションのイテレータを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 同期コレクションのイテレータを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は同期コレクションのイテレータを生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1335,7 +1335,7 @@
 	</BugPattern>
 
 	<BugPattern type="CC_CYCLOMATIC_COMPLEXITY">
-		<ShortDescription>メソッドは過度に複雑です。</ShortDescription>
+		<ShortDescription>メソッドは 過度に複雑です。</ShortDescription>
 		<LongDescription>メソッド {1} は過度に複雑です。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1347,7 +1347,7 @@
 	</BugPattern>
 
 	<BugPattern type="OCP_OVERLY_CONCRETE_PARAMETER">
-		<ShortDescription>メソッドは不必要に具象クラスをパラメータに定義しています。</ShortDescription>
+		<ShortDescription>メソッドは 不必要に具象クラスをパラメータに定義しています。</ShortDescription>
 		<LongDescription>メソッド {1} は不必要に具象クラスをパラメータに定義しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1359,7 +1359,7 @@
 	</BugPattern>
 
 	<BugPattern type="LII_LIST_INDEXED_ITERATING">
-		<ShortDescription>メソッドはリストを反復処理するために、整数インデックスの forループを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは リストを反復処理するために、整数インデックスの forループを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} はリストを反復処理するために、整数インデックスの forループを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1372,7 +1372,7 @@
 	</BugPattern>
 
 	<BugPattern type="UCC_UNRELATED_COLLECTION_CONTENTS">
-		<ShortDescription>メソッドはコレクションや配列に、無関係な型を追加しています。</ShortDescription>
+		<ShortDescription>メソッドは コレクションや配列に、無関係な型を追加しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコレクションや配列に、無関係な型を追加しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1397,7 +1397,7 @@
 	</BugPattern>
 
 	<BugPattern type="CE_CLASS_ENVY">
-		<ShortDescription>メソッドは他のクラスのメソッドを過度に使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 他のクラスのメソッドを過度に使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は他のクラスのメソッドを過度に使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1411,7 +1411,7 @@
 	</BugPattern>
 
 	<BugPattern type="LSC_LITERAL_STRING_COMPARISON">
-		<ShortDescription>メソッドは、リテラル文字列との比較に、リテラル文字列を引数として渡しています。</ShortDescription>
+		<ShortDescription>メソッドは リテラル文字列との比較に、リテラル文字列を引数として渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} は、リテラル文字列との比較に、リテラル文字列を引数として渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1485,7 +1485,7 @@
 	</BugPattern>
 
 	<BugPattern type="MAC_MANUAL_ARRAY_COPY">
-		<ShortDescription>メソッドは配列を手動でコピーしています。</ShortDescription>
+		<ShortDescription>メソッドは 配列を手動でコピーしています。</ShortDescription>
 		<LongDescription>メソッド {1} は配列を手動でコピーしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1496,7 +1496,7 @@
 	</BugPattern>
 
 	<BugPattern type="FPL_FLOATING_POINT_LOOPS">
-		<ShortDescription>メソッドは浮動小数点インデックスのループを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 浮動小数点インデックスのループを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は浮動小数点インデックスのループを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1509,7 +1509,7 @@
 	</BugPattern>
 
 	<BugPattern type="NCMU_NON_COLLECTION_METHOD_USE">
-		<ShortDescription>メソッドは古い非コレクションインターフェイスメソッドを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 古い非コレクションインターフェイスメソッドを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は古い非コレクションインターフェイスメソッドを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1545,7 +1545,7 @@
 	</BugPattern>
 
 	<BugPattern type="SMII_STATIC_METHOD_INSTANCE_INVOCATION">
-		<ShortDescription>メソッドはインスタンスの静的メソッドを呼び出しています。</ShortDescription>
+		<ShortDescription>メソッドは インスタンスの静的メソッドを呼び出しています。</ShortDescription>
 		<LongDescription>メソッド {1} はインスタンスの静的メソッドを呼び出しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1559,7 +1559,7 @@
 	</BugPattern>
 
 	<BugPattern type="STS_SPURIOUS_THREAD_STATES">
-		<ShortDescription>メソッドはスレッドインスタンス上で wait、notify又は notifyAll メソッドを呼び出しています。</ShortDescription>
+		<ShortDescription>メソッドは スレッドインスタンス上で wait、notify又は notifyAll メソッドを呼び出しています。</ShortDescription>
 		<LongDescription>メソッド {1} はスレッドインスタンス上で wait、notify又は notifyAll メソッドを呼び出しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1573,7 +1573,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_AUTOBOXING_CTOR">
-		<ShortDescription>メソッドはプリミティブラッパークラスのコンストラクタに、同じプリミティブクラスのインスタンスを渡しています。</ShortDescription>
+		<ShortDescription>メソッドは プリミティブラッパークラスのコンストラクタに、同じプリミティブクラスのインスタンスを渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はプリミティブラッパークラスのコンストラクタに、同じプリミティブクラスのインスタンスを渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1586,7 +1586,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOXING_STRING_CTOR">
-		<ShortDescription>メソッドはプリミティブラッパーコンストラクタへパースされた文字列を渡しています。</ShortDescription>
+		<ShortDescription>メソッドは プリミティブラッパーコンストラクタへパースされた文字列を渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はプリミティブラッパーコンストラクタへパースされた文字列を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1598,7 +1598,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_AUTOBOXING_VALUEOF">
-		<ShortDescription>メソッドはラッパークラスの valueOf メソッドへプリミティブラッパーを渡しています。</ShortDescription>
+		<ShortDescription>メソッドは ラッパークラスの valueOf メソッドへプリミティブラッパーを渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はラッパークラスの valueOf メソッドへプリミティブラッパーを渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1611,7 +1611,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOXING_PARSE">
-		<ShortDescription>メソッドは過度のボクシングを使用し、文字列からプリミティブに変換しています。</ShortDescription>
+		<ShortDescription>メソッドは 過度のボクシングを使用し、文字列からプリミティブに変換しています。</ShortDescription>
 		<LongDescription>メソッド {1} は過度のボクシングを使用し、文字列からプリミティブに変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1624,7 +1624,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOXING_VALUEOF">
-		<ShortDescription>メソッドは過度のボクシングを使用し、文字列からボックスプリミティブに変換しています。</ShortDescription>
+		<ShortDescription>メソッドは 過度のボクシングを使用し、文字列からボックスプリミティブに変換しています。</ShortDescription>
 		<LongDescription>メソッド {1} は過度のボクシングを使用し、文字列からボックスプリミティブに変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1637,7 +1637,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOX_TO_UNBOX">
-		<ShortDescription>メソッドはプリミティブ値を取得するためだけに、プリミティブからボックスプリミティブを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは プリミティブ値を取得するためだけに、プリミティブからボックスプリミティブを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} はプリミティブ値を取得するためだけに、プリミティブからボックスプリミティブを生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1656,7 +1656,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOX_TO_CAST">
-		<ShortDescription>メソッドは他のプリミティブ型へキャストするためだけに、ボックスプリミティブを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 他のプリミティブ型へキャストするためだけに、ボックスプリミティブを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は他のプリミティブ型へキャストするためだけに、ボックスプリミティブを生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1675,7 +1675,7 @@
 	</BugPattern>
 
 	<BugPattern type="NAB_NEEDLESS_BOOLEAN_CONSTANT_CONVERSION">
-		<ShortDescription>メソッドは不必要にブール定数をボックスしています。</ShortDescription>
+		<ShortDescription>メソッドは 不必要にブール定数をボックスしています。</ShortDescription>
 		<LongDescription>メソッド {1} は不必要にブール定数をボックスしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1695,7 +1695,7 @@
 	</BugPattern>
 
 	<BugPattern type="USBR_UNNECESSARY_STORE_BEFORE_RETURN">
-		<ShortDescription>メソッドは結果を返す直前に、結果をローカル変数に格納しています。</ShortDescription>
+		<ShortDescription>メソッドは 結果を返す直前に、結果をローカル変数に格納しています。</ShortDescription>
 		<LongDescription>メソッド {1} は結果を返す直前に、結果をローカル変数に格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1708,7 +1708,7 @@
 	</BugPattern>
 
 	<BugPattern type="COM_COPIED_OVERRIDDEN_METHOD">
-		<ShortDescription>メソッドはスーパークラスのメソッドと同一内容で実装されています。</ShortDescription>
+		<ShortDescription>メソッドは スーパークラスのメソッドと同一内容で実装されています。</ShortDescription>
 		<LongDescription>メソッド {1} はスーパークラスのメソッドと同一内容で実装されています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1720,7 +1720,7 @@
 	</BugPattern>
 
 	<BugPattern type="ABC_ARRAY_BASED_COLLECTIONS">
-		<ShortDescription>メソッドはコレクションの基礎として配列を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは コレクションの基礎として配列を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコレクションの基礎として配列を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1735,7 +1735,7 @@
 	</BugPattern>
 
 	<BugPattern type="ODN_ORPHANED_DOM_NODE">
-		<ShortDescription>メソッドはドキュメントにアタッチしていないDOMノードを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは ドキュメントにアタッチしていないDOMノードを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} はドキュメントにアタッチしていないDOMノードを生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1758,7 +1758,7 @@
 	</BugPattern>
 
 	<BugPattern type="CBX_CUSTOM_BUILT_XML">
-		<ShortDescription>メソッドはアドホックな結合でXML文字列を生成しています。</ShortDescription>
+		<ShortDescription>メソッドは アドホックな結合でXML文字列を生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} はアドホックな結合でXML文字列を生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1772,7 +1772,7 @@
 	</BugPattern>
 
 	<BugPattern type="BSB_BLOATED_SYNCHRONIZED_BLOCK">
-		<ShortDescription>メソッドはコードのブロックを過度に同期しています。</ShortDescription>
+		<ShortDescription>メソッドは コードのブロックを過度に同期しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコードのブロックを過度に同期しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1786,7 +1786,7 @@
 	</BugPattern>
 
 	<BugPattern type="CLI_CONSTANT_LIST_INDEX">
-		<ShortDescription>メソッドは定数インデックスでリストや配列にアクセスしています。</ShortDescription>
+		<ShortDescription>メソッドは 定数インデックスでリストや配列にアクセスしています。</ShortDescription>
 		<LongDescription>メソッド {1} は定数インデックスでリストや配列にアクセスしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1812,7 +1812,7 @@
 	</BugPattern>
 
 	<BugPattern type="AWCBR_ARRAY_WRAPPED_CALL_BY_REFERENCE">
-		<ShortDescription>メソッドは参照によるアクセスをシミュレートするために、１要素の配列を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 参照によるアクセスをシミュレートするために、１要素の配列を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は参照によるアクセスをシミュレートするために、１要素の配列を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1824,7 +1824,7 @@
 	</BugPattern>
 
 	<BugPattern type="SG_SLUGGISH_GUI">
-		<ShortDescription>メソッドはGUIスレッドで時間のかかる操作を実行しています。</ShortDescription>
+		<ShortDescription>メソッドは GUIスレッドで時間のかかる操作を実行しています。</ShortDescription>
 		<LongDescription>メソッド {1} はGUIスレッドで時間のかかる操作を実行しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1838,7 +1838,7 @@
 	</BugPattern>
 
 	<BugPattern type="NIR_NEEDLESS_INSTANCE_RETRIEVAL">
-		<ShortDescription>メソッドは静的メンバーを取得するために、インスタンスを取得しています。</ShortDescription>
+		<ShortDescription>メソッドは 静的メンバーを取得するために、インスタンスを取得しています。</ShortDescription>
 		<LongDescription>メソッド {1} は静的メンバーを取得するために、インスタンスを取得しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1850,7 +1850,7 @@
 	</BugPattern>
 
 	<BugPattern type="DDC_DOUBLE_DATE_COMPARISON">
-		<ShortDescription>メソッドは日付の比較を行う際に、２つの日付比較を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 日付の比較を行う際に、２つの日付比較を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は日付の比較を行う際に、２つの日付比較を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1896,7 +1896,7 @@
 	</BugPattern>
 
 	<BugPattern type="JVR_JDBC_VENDOR_RELIANCE">
-		<ShortDescription>メソッドはJDBCベンダーの特定のクラスとメソッドを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは JDBCベンダーの特定のクラスとメソッドを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} はJDBCベンダーの特定のクラスとメソッドを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -1918,7 +1918,7 @@
 	</BugPattern>
 
 	<BugPattern type="LSYC_LOCAL_SYNCHRONIZED_COLLECTION">
-		<ShortDescription>メソッドは同期コレクションをローカル変数ベースで生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 同期コレクションをローカル変数ベースで生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は同期コレクションをローカル変数ベースで生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2030,7 +2030,7 @@
 	</BugPattern>
 
 	<BugPattern type="S508C_SET_COMP_COLOR">
-		<ShortDescription>メソッドはコンポーネントの色を明示的に設定しています。</ShortDescription>
+		<ShortDescription>メソッドは コンポーネントの色を明示的に設定しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコンポーネントの色を明示的に設定しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2042,7 +2042,7 @@
 	</BugPattern>
 
 	<BugPattern type="S508C_NON_TRANSLATABLE_STRING">
-		<ShortDescription>メソッドはコンポーネントのタイトル/ラベルに定数文字列を渡しています。</ShortDescription>
+		<ShortDescription>メソッドは コンポーネントのタイトル/ラベルに定数文字列を渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコンポーネントのタイトル/ラベルに定数文字列を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2054,7 +2054,7 @@
 	</BugPattern>
 
 	<BugPattern type="S508C_APPENDED_STRING">
-		<ShortDescription>メソッドはコンポーネントのタイトル/ラベルに文字列を付加し渡しています。</ShortDescription>
+		<ShortDescription>メソッドは コンポーネントのタイトル/ラベルに文字列を付加し渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコンポーネントのタイトル/ラベルに文字列を付加し渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2077,7 +2077,7 @@
 	</BugPattern>
 
 	<BugPattern type="SIL_SQL_IN_LOOP">
-		<ShortDescription>メソッドはループ内でSQLクエリを実行しています。</ShortDescription>
+		<ShortDescription>メソッドは ループ内でSQLクエリを実行しています。</ShortDescription>
 		<LongDescription>メソッド {1} はループ内でSQLクエリを実行しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2104,7 +2104,7 @@
 	</BugPattern>
 
 	<BugPattern type="ITC_INHERITANCE_TYPE_CHECKING">
-		<ShortDescription>メソッドは仲介ロジックのために複数の instanceof オペレータを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 仲介ロジックのために複数の instanceof オペレータを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は仲介ロジックのために複数の instanceof オペレータを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2117,7 +2117,7 @@
 	</BugPattern>
 
 	<BugPattern type="SACM_STATIC_ARRAY_CREATED_IN_METHOD">
-		<ShortDescription>メソッドは定数を使用して配列を生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 定数を使用して配列を生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は定数を使用して配列を生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2129,7 +2129,7 @@
 	</BugPattern>
 
 	<BugPattern type="PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS">
-		<ShortDescription>メソッドは繰り返して同じオブジェクトの同じメソッドを呼び出しているようです。</ShortDescription>
+		<ShortDescription>メソッドは 繰り返して同じオブジェクトの同じメソッドを呼び出しているようです。</ShortDescription>
 		<LongDescription>メソッド {1} は繰り返して同じオブジェクトの同じメソッドを呼び出しているようです。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2143,7 +2143,7 @@
 	</BugPattern>
 
 	<BugPattern type="UTA_USE_TO_ARRAY">
-		<ShortDescription>メソッドはコレクションから配列を手動で生成しています。</ShortDescription>
+		<ShortDescription>メソッドは コレクションから配列を手動で生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコレクションから配列を手動で生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2156,7 +2156,7 @@
 	</BugPattern>
 
 	<BugPattern type="LEST_LOST_EXCEPTION_STACK_TRACE">
-		<ShortDescription>メソッドはcatchブロックから代替例外を履歴なしでスローしています。</ShortDescription>
+		<ShortDescription>メソッドは catchブロックから代替例外を履歴なしでスローしています。</ShortDescription>
 		<LongDescription>メソッド {1} はcatchブロックから代替例外を履歴なしでスローしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2169,7 +2169,7 @@
 	</BugPattern>
 
 	<BugPattern type="UCPM_USE_CHARACTER_PARAMETERIZED_METHOD">
-		<ShortDescription>メソッドは１文字の定数文字列を char型パラメータを持つメソッドに渡しています。</ShortDescription>
+		<ShortDescription>メソッドは １文字の定数文字列を char型パラメータを持つメソッドに渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} は１文字の定数文字列を char型パラメータを持つメソッドに渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2181,7 +2181,7 @@
 	</BugPattern>
 
 	<BugPattern type="TR_TAIL_RECURSION">
-		<ShortDescription>メソッドは末尾再帰を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 末尾再帰を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は末尾再帰を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2193,7 +2193,7 @@
 	</BugPattern>
 
 	<BugPattern type="URV_UNRELATED_RETURN_VALUES">
-		<ShortDescription>メソッドは無関係な様々な型のオブジェクトを返します。</ShortDescription>
+		<ShortDescription>メソッドは 無関係な様々な型のオブジェクトを返します。</ShortDescription>
 		<LongDescription>メソッド {1} は無関係な様々な型のオブジェクトを返します。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2204,7 +2204,7 @@
 	</BugPattern>
 
 	<BugPattern type="URV_CHANGE_RETURN_TYPE">
-		<ShortDescription>メソッドは宣言されたよりもオブジェクトの具体的な型を返します。</ShortDescription>
+		<ShortDescription>メソッドは 宣言されたよりもオブジェクトの具体的な型を返します。</ShortDescription>
 		<LongDescription>メソッド {1} は宣言されたよりもオブジェクトの具体的な型を返します。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2259,7 +2259,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_NEGATIVE_BITSET_ITEM">
-		<ShortDescription>メソッドは、サポートしていない BitSet に対して負の数を bit として渡しています。</ShortDescription>
+		<ShortDescription>メソッドは サポートしていない BitSet に対して負の数を bit として渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} は、サポートしていない BitSet に対して負の数を bit として渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2270,7 +2270,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_INTERN_ON_CONSTANT">
-		<ShortDescription>メソッドは定数文字列の intern メソッドを呼んでいます。</ShortDescription>
+		<ShortDescription>メソッドは 定数文字列の intern メソッドを呼んでいます。</ShortDescription>
 		<LongDescription>メソッド {1} は定数文字列の intern メソッドを呼んでいます。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2294,7 +2294,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_USE_MATH_CONSTANT">
-		<ShortDescription>メソッドは非標準な数学定数を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 非標準な数学定数を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は非標準な数学定数を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2305,7 +2305,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_STUTTERED_ASSIGNMENT">
-		<ShortDescription>メソッドは２回続けてローカル変数に値を格納しています。</ShortDescription>
+		<ShortDescription>メソッドは ２回続けてローカル変数に値を格納しています。</ShortDescription>
 		<LongDescription>メソッド {1} は２回続けてローカル変数に値を格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2364,7 +2364,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_INVALID_BOOLEAN_NULL_CHECK">
-		<ShortDescription>メソッドは　Boolean値のNULLチェックに 誤ったC++スタイルを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは Boolean値のNULLチェックに 誤ったC++スタイルを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は　Boolean値のNULLチェックに 誤ったC++スタイルを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2404,7 +2404,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_SUSPECT_STRING_TEST">
-		<ShortDescription>メソッドは空の文字列を NULL や 通常の文字列 とは異なる扱いをしています。</ShortDescription>
+		<ShortDescription>メソッドは 空の文字列を NULL や 通常の文字列 とは異なる扱いをしています。</ShortDescription>
 		<LongDescription>メソッド {1} は空の文字列を NULL や 通常の文字列 とは異なる扱いをしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2422,7 +2422,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_USE_STRINGBUILDER_LENGTH">
-		<ShortDescription>メソッドは文字列の長さを取得するために、 StringBuffer または StringBuilder から String へ変換しています。</ShortDescription>
+		<ShortDescription>メソッドは 文字列の長さを取得するために、 StringBuffer または StringBuilder から String へ変換しています。</ShortDescription>
 		<LongDescription>メソッド {1} は文字列の長さを取得するために、 StringBuffer または StringBuilder から String へ変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2467,7 +2467,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_USE_GETPROPERTY">
-		<ShortDescription>メソッドは１つのプロパティを取得するために、getProperty ではなく、getProperties を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは １つのプロパティを取得するために、getProperty ではなく、getProperties を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は１つのプロパティを取得するために、getProperty ではなく、getProperties を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2495,7 +2495,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_USELESS_CASING">
-		<ShortDescription>メソッドは大文字小文字の変更後に、大文字小文字の区別なしで文字列比較しています。</ShortDescription>
+		<ShortDescription>メソッドは 大文字小文字の変更後に、大文字小文字の区別なしで文字列比較しています。</ShortDescription>
 		<LongDescription>メソッド {1} は大文字小文字の変更後に、大文字小文字の区別なしで文字列比較しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2507,7 +2507,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_NON_ARRAY_PARM">
-		<ShortDescription>メソッドは配列を期待するパラメータに対して非配列オブジェクトを渡しています。</ShortDescription>
+		<ShortDescription>メソッドは 配列を期待するパラメータに対して非配列オブジェクトを渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} は配列を期待するパラメータに対して非配列オブジェクトを渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2530,7 +2530,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_TEMPORARY_TRIM">
-		<ShortDescription>メソッドは一時的に文字列をトリムしています。</ShortDescription>
+		<ShortDescription>メソッドは 一時的に文字列をトリムしています。</ShortDescription>
 		<LongDescription>メソッド {1} は一時的に文字列をトリムしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2544,7 +2544,7 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_STRINGBUILDER_IS_MUTABLE">
-		<ShortDescription>メソッドは不変な StringBuilder インスタンスをそれ自身の変数に不必要に格納しています。</ShortDescription>
+		<ShortDescription>メソッドは 不変な StringBuilder インスタンスをそれ自身の変数に不必要に格納しています。</ShortDescription>
 		<LongDescription>メソッド {1} は不変な StringBuilder インスタンスをそれ自身の変数に不必要に格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2557,7 +2557,7 @@
 	</BugPattern>
 
 	<BugPattern type="BAS_BLOATED_ASSIGNMENT_SCOPE">
-		<ShortDescription>メソッドは必要とされるよりも大きなスコープで変数を確保しています。</ShortDescription>
+		<ShortDescription>メソッドは 必要とされるよりも大きなスコープで変数を確保しています。</ShortDescription>
 		<LongDescription>メソッド {1} は必要とされるよりも大きなスコープで変数を確保しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2587,7 +2587,7 @@
 	</BugPattern>
 
 	<BugPattern type="DWI_DELETING_WHILE_ITERATING">
-		<ShortDescription>メソッドは繰り返しの最中にコレクションの要素を削除しています。</ShortDescription>
+		<ShortDescription>メソッドは 繰り返しの最中にコレクションの要素を削除しています。</ShortDescription>
 		<LongDescription>メソッド {1} は繰り返しの最中にコレクションの要素を削除しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2601,7 +2601,7 @@
 	</BugPattern>
 
 	<BugPattern type="DWI_MODIFYING_WHILE_ITERATING">
-		<ShortDescription>メソッドは繰り返しの最中にコレクションの要素を変更しています。</ShortDescription>
+		<ShortDescription>メソッドは 繰り返しの最中にコレクションの要素を変更しています。</ShortDescription>
 		<LongDescription>メソッド {1} は繰り返しの最中にコレクションの要素を変更しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2614,7 +2614,7 @@
 	</BugPattern>
 
 	<BugPattern type="USS_USE_STRING_SPLIT">
-		<ShortDescription>メソッドは文字列のトークン化を使用してい文字列配列を生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 文字列のトークン化を使用してい文字列配列を生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は文字列のトークン化を使用してい文字列配列を生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2646,7 +2646,7 @@
 	</BugPattern>
 
 	<BugPattern type="UAA_USE_ADD_ALL">
-		<ShortDescription>メソッドは１つのコレクションの内容を別のコレクションにコピーするために、単純なループを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは １つのコレクションの内容を別のコレクションにコピーするために、単純なループを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は１つのコレクションの内容を別のコレクションにコピーするために、単純なループを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2672,7 +2672,7 @@
 	</BugPattern>
 
 	<BugPattern type="NCS_NEEDLESS_CUSTOM_SERIALIZATION">
-		<ShortDescription>メソッドはデフォルトストリーミング動作を不必要に実装しています。</ShortDescription>
+		<ShortDescription>メソッドは デフォルトストリーミング動作を不必要に実装しています。</ShortDescription>
 		<LongDescription>メソッド {1} はデフォルトストリーミング動作を不必要に実装しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2732,7 +2732,7 @@
 	</BugPattern>
 
 	<BugPattern type="CFS_CONFUSING_FUNCTION_SEMANTICS">
-		<ShortDescription>メソッドは変更されたパラメータを返します。</ShortDescription>
+		<ShortDescription>メソッドは 変更されたパラメータを返します。</ShortDescription>
 		<LongDescription>メソッド {1} は変更されたパラメータを返します。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2747,7 +2747,7 @@
 	</BugPattern>
 
 	<BugPattern type="JAO_JUNIT_ASSERTION_ODDITIES_ACTUAL_CONSTANT">
-		<ShortDescription>メソッドは２つ目の（actual）アサーション・パラメータに定数を渡しています。</ShortDescription>
+		<ShortDescription>メソッドは ２つ目の（actual）アサーション・パラメータに定数を渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} は２つ目の（actual）アサーション・パラメータに定数を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2759,7 +2759,7 @@
 	</BugPattern>
 
 	<BugPattern type="JAO_JUNIT_ASSERTION_ODDITIES_INEXACT_DOUBLE">
-		<ShortDescription>メソッドは２つの浮動小数点数が正確に一致することを確認しています。</ShortDescription>
+		<ShortDescription>メソッドは ２つの浮動小数点数が正確に一致することを確認しています。</ShortDescription>
 		<LongDescription>メソッド {1} は２つの浮動小数点数が正確に一致することを確認しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2770,7 +2770,7 @@
 	</BugPattern>
 
 	<BugPattern type="JAO_JUNIT_ASSERTION_ODDITIES_BOOLEAN_ASSERT">
-		<ShortDescription>メソッドは値が true か false かを確認しています。</ShortDescription>
+		<ShortDescription>メソッドは 値が true か false かを確認しています。</ShortDescription>
 		<LongDescription>メソッド {1} は値が true か false かを確認しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2781,7 +2781,7 @@
 	</BugPattern>
 
 	<BugPattern type="JAO_JUNIT_ASSERTION_ODDITIES_IMPOSSIBLE_NULL">
-		<ShortDescription>メソッドはオートボクシング値がNULL値ではないことを確認しています。</ShortDescription>
+		<ShortDescription>メソッドは オートボクシング値がNULL値ではないことを確認しています。</ShortDescription>
 		<LongDescription>メソッド {1} はオートボクシング値がNULL値ではないことを確認しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2804,7 +2804,7 @@
 	</BugPattern>
 
 	<BugPattern type="WEM_WEAK_EXCEPTION_MESSAGING">
-		<ShortDescription>メソッドは静的メッセージ文字列を使用した例外をスローしています。</ShortDescription>
+		<ShortDescription>メソッドは 静的メッセージ文字列を使用した例外をスローしています。</ShortDescription>
 		<LongDescription>メソッド {1} は静的メッセージ文字列を使用した例外をスローしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2817,7 +2817,7 @@
 	</BugPattern>
 
 	<BugPattern type="SCSS_SUSPICIOUS_CLUSTERED_SESSION_SUPPORT">
-		<ShortDescription>メソッドはsetAttributeメソッドを呼び出すことなく、HTTPセッション属性を変更しています。</ShortDescription>
+		<ShortDescription>メソッドは setAttributeメソッドを呼び出すことなく、HTTPセッション属性を変更しています。</ShortDescription>
 		<LongDescription>メソッド {1} はsetAttributeメソッドを呼び出すことなく、HTTPセッション属性を変更しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2830,7 +2830,7 @@
 	</BugPattern>
 
    <BugPattern type="LO_LOGGER_LOST_EXCEPTION_STACK_TRACE">
-	  <ShortDescription>メソッドはロガーメソッドの最初のパラメータに例外を誤って渡しています。</ShortDescription>
+	  <ShortDescription>メソッドは ロガーメソッドの最初のパラメータに例外を誤って渡しています。</ShortDescription>
 	  <LongDescription>メソッド {1} はロガーメソッドの最初のパラメータに例外を誤って渡しています。</LongDescription>
 	  <Details>
 		 <![CDATA[
@@ -2843,7 +2843,7 @@
    </BugPattern>
 
 	<BugPattern type="LO_SUSPECT_LOG_CLASS">
-		<ShortDescription>メソッドはロガーを取得する際に、無関係なクラスを指定しています。</ShortDescription>
+		<ShortDescription>メソッドは ロガーを取得する際に、無関係なクラスを指定しています。</ShortDescription>
 		<LongDescription>メソッド {1} はロガーを取得する際に、無関係なクラスを指定しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2866,7 +2866,7 @@
 	</BugPattern>
 
 	<BugPattern type="LO_STUTTERED_MESSAGE">
-		<ShortDescription>メソッドはロガー内の例外メッセージを繰り返しています。</ShortDescription>
+		<ShortDescription>メソッドは ロガー内の例外メッセージを繰り返しています。</ShortDescription>
 		<LongDescription>メソッド {1} はロガー内の例外メッセージを繰り返しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2899,7 +2899,7 @@
 	</BugPattern>
 
 	<BugPattern type="DSOC_DUBIOUS_SET_OF_COLLECTIONS">
-		<ShortDescription>メソッドはコレクションの set メソッドを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは コレクションの set メソッドを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} はコレクションの set メソッドを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2982,7 +2982,7 @@
 	</BugPattern>
 
 	<BugPattern type="SUA_SUSPICIOUS_UNINITIALIZED_ARRAY">
-		<ShortDescription>メソッドは初期化されていないようにみえる配列を返します。</ShortDescription>
+		<ShortDescription>メソッドは 初期化されていないようにみえる配列を返します。</ShortDescription>
 		<LongDescription>メソッド {1} は初期化されていないようにみえる配列を返します。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3006,7 +3006,7 @@
 	</BugPattern>
 
 	<BugPattern type="IKNC_INCONSISTENT_HTTP_ATTRIBUTE_CASING">
-		<ShortDescription>メソッドは属性名が大文字小文字の違いしかない同じ HttpSession属性を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 属性名が大文字小文字の違いしかない同じ HttpSession属性を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は属性名が大文字小文字の違いしかない同じ HttpSession属性を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3017,7 +3017,7 @@
 	</BugPattern>
 
 	<BugPattern type="IKNC_INCONSISTENT_HTTP_PARAM_CASING">
-		<ShortDescription>メソッドはパラメータ名が大文字小文字の違いしかない同じ HttpRequestパラメータを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは パラメータ名が大文字小文字の違いしかない同じ HttpRequestパラメータを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} はパラメータ名が大文字小文字の違いしかない同じ HttpRequestパラメータを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3028,7 +3028,7 @@
 	</BugPattern>
 
 	<BugPattern type="OC_OVERZEALOUS_CASTING">
-		<ShortDescription>メソッドは必要とされるよりも具体的に、右辺のキャストを手動で行なっています。</ShortDescription>
+		<ShortDescription>メソッドは 必要とされるよりも具体的に、右辺のキャストを手動で行なっています。</ShortDescription>
 		<LongDescription>メソッド {1} は必要とされるよりも具体的に、右辺のキャストを手動で行なっています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3040,7 +3040,7 @@
 	</BugPattern>
 
 	<BugPattern type="PDP_POORLY_DEFINED_PARAMETER">
-		<ShortDescription>メソッドは適切に機能するのに必要な抽象化よりも、さらに抽象化したパラメータを定義しています。</ShortDescription>
+		<ShortDescription>メソッドは 適切に機能するのに必要な抽象化よりも、さらに抽象化したパラメータを定義しています。</ShortDescription>
 		<LongDescription>メソッド {1} は適切に機能するのに必要な抽象化よりも、さらに抽象化したパラメータを定義しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3066,7 +3066,7 @@
 	</BugPattern>
 
 	<BugPattern type="CVAA_CONTRAVARIANT_ARRAY_ASSIGNMENT">
-		<ShortDescription>メソッドは反変配列の格納を行なっています。</ShortDescription>
+		<ShortDescription>メソッドは 反変配列の格納を行なっています。</ShortDescription>
 		<LongDescription>メソッド {1} は反変配列の格納を行なっています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3085,7 +3085,7 @@
 	</BugPattern>
 
 	<BugPattern type="CVAA_CONTRAVARIANT_ELEMENT_ASSIGNMENT">
-		<ShortDescription>メソッドは反変配列要素の格納を行なっています。</ShortDescription>
+		<ShortDescription>メソッドは 反変配列要素の格納を行なっています。</ShortDescription>
 		<LongDescription>メソッド {1} は反変配列要素の格納を行なっています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3118,7 +3118,7 @@
 	</BugPattern>
 
 	<BugPattern type="SNG_SUSPICIOUS_NULL_FIELD_GUARD">
-		<ShortDescription>メソッドはフィールド変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
+		<ShortDescription>メソッドは フィールド変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
 		<LongDescription>メソッド {1} はフィールド変数のNULLチェックをし、その変数への値の格納を試みています。</LongDescription>
 		<Details>
 				<![CDATA[
@@ -3130,7 +3130,7 @@
 	</BugPattern>
 
 	<BugPattern type="SNG_SUSPICIOUS_NULL_LOCAL_GUARD">
-		<ShortDescription>メソッドはローカル変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
+		<ShortDescription>メソッドは ローカル変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
 		<LongDescription>メソッド {1} はローカル変数のNULLチェックをし、その変数への値の格納を試みています。</LongDescription>
 		<Details>
 				<![CDATA[
@@ -3182,7 +3182,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_PROMISCUOUS_SERVERSOCKET">
-		<ShortDescription>メソッドは無差別なServerSocketオブジェクトを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 無差別なServerSocketオブジェクトを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は無差別なServerSocketを生成しています。これはセキュリティ脆弱性を持つことになります。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3193,7 +3193,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_RANDOM_SEED">
-		<ShortDescription>メソッドは安全ではない Randomオブジェクトを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは 安全ではない Randomオブジェクトを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} は安全ではない Randomオブジェクトを生成しています。これはセキュリティ脆弱性を持つことになります。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3213,7 +3213,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_THREAD_PRIORITIES">
-		<ShortDescription>メソッドは不適切なスレッドの優先度を使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 不適切なスレッドの優先度を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は メソッド {2} を呼び出すことで不適切なスレッドの優先度を使用しています。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3223,7 +3223,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_THREAD_YIELD">
-		<ShortDescription>メソッドはスレッドを意図的に管理しようとしています。</ShortDescription>
+		<ShortDescription>メソッドは スレッドを意図的に管理しようとしています。</ShortDescription>
 		<LongDescription>メソッド {1} は メソッド {2} を呼び出すことでスレッドを意図的に管理しようとしています。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3233,7 +3233,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_WAIT_WITHOUT_TIMEOUT">
-		<ShortDescription>メソッドはタイムアウトなしで、待機します。</ShortDescription>
+		<ShortDescription>メソッドは タイムアウトなしで、待機します。</ShortDescription>
 		<LongDescription>メソッド {1} は {2} を呼び出す際に、タイムアウトなしで、待機します。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3263,7 +3263,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_LOCK_ISLOCKED">
-		<ShortDescription>メソッドはロックがロックされているかを確認しています。</ShortDescription>
+		<ShortDescription>メソッドは ロックがロックされているかを確認しています。</ShortDescription>
 		<LongDescription>メソッド {1} は {2} を使用しロックがロックされているかを確認しています。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3273,7 +3273,7 @@
 	</BugPattern>
 
 	<BugPattern type="MDM_STRING_BYTES_ENCODING">
-		<ShortDescription>メソッドは文字エンコーディングの指定をせず、文字列のバイトデータをエンコードしています。</ShortDescription>
+		<ShortDescription>メソッドは 文字エンコーディングの指定をせず、文字列のバイトデータをエンコードしています。</ShortDescription>
 		<LongDescription>メソッド {1} は文字エンコーディングの指定をせず、文字列のバイトデータをエンコードしています。</LongDescription>
 		<Details>
 		  <![CDATA[
@@ -3305,7 +3305,7 @@
 	</BugPattern>
 
 	<BugPattern type="IPU_IMPROPER_PROPERTIES_USE">
-		<ShortDescription>メソッドはプロパティオブジェクトに対して 非文字列値を格納しています。</ShortDescription>
+		<ShortDescription>メソッドは プロパティオブジェクトに対して 非文字列値を格納しています。</ShortDescription>
 		<LongDescription>メソッド {1} はプロパティオブジェクトに対して 非文字列値を格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3331,7 +3331,7 @@
 	</BugPattern>
 
 	<BugPattern type="PCAIL_POSSIBLE_CONSTANT_ALLOCATION_IN_LOOP">
-		<ShortDescription>メソッドはループ中で決まった方法でオブジェクトを生成しています。</ShortDescription>
+		<ShortDescription>メソッドは ループ中で決まった方法でオブジェクトを生成しています。</ShortDescription>
 		<LongDescription>メソッド {1} はループ中で決まった方法でオブジェクトを生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3345,7 +3345,7 @@
 	</BugPattern>
 
 	<BugPattern type="WOC_WRITE_ONLY_COLLECTION_LOCAL">
-		<ShortDescription>メソッドは生成、初期化したCollectionに対して、参照や取得を行なっていません。</ShortDescription>
+		<ShortDescription>メソッドは 生成、初期化したCollectionに対して、参照や取得を行なっていません。</ShortDescription>
 		<LongDescription>メソッド {1} が生成、初期化したCollectionに対して、参照や取得は行なっていないません</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3369,7 +3369,7 @@
 	</BugPattern>
 
 	<BugPattern type="UVA_USE_VAR_ARGS">
-		<ShortDescription>メソッドは可変引数ではなく、パラメータの最後に配列を定義しています。</ShortDescription>
+		<ShortDescription>メソッドは 可変引数ではなく、パラメータの最後に配列を定義しています。</ShortDescription>
 		<LongDescription>メソッド {1} は可変引数ではなく、パラメータの最後に配列を定義しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3381,7 +3381,7 @@
 	</BugPattern>
 
 	<BugPattern type="PUS_POSSIBLE_UNSUSPECTED_SERIALIZATION">
-		<ShortDescription>メソッドは非staticなインナークラスのインスタンスをシリアライズしています。</ShortDescription>
+		<ShortDescription>メソッドは 非staticなインナークラスのインスタンスをシリアライズしています。</ShortDescription>
 		<LongDescription>メソッド {1} は非staticなインナークラスのインスタンスをシリアライズしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3395,7 +3395,7 @@
 	</BugPattern>
 
 	<BugPattern type="SEC_SIDE_EFFECT_CONSTRUCTOR">
-		<ShortDescription>メソッドは副作用のあるコンストラクタを使用しています。</ShortDescription>
+		<ShortDescription>メソッドは 副作用のあるコンストラクタを使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は副作用のあるコンストラクタを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3408,7 +3408,7 @@
 	</BugPattern>
 
 	<BugPattern type="SGSU_SUSPICIOUS_GETTER_SETTER_USE">
-		<ShortDescription>メソッドはセッターへ同じbeanのゲッターの値を渡しています。</ShortDescription>
+		<ShortDescription>メソッドは セッターへ同じbeanのゲッターの値を渡しています。</ShortDescription>
 		<LongDescription>メソッド {1} はセッターへ同じbeanのゲッターの値を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3419,7 +3419,7 @@
 	</BugPattern>
 
 	<BugPattern type="LGO_LINGERING_GRAPHICS_OBJECT">
-		<ShortDescription>メソッドは生成した java.awt.Graphics オブジェクトを破棄していません。</ShortDescription>
+		<ShortDescription>メソッドは 生成した java.awt.Graphics オブジェクトを破棄していません。</ShortDescription>
 		<LongDescription>メソッド {1} は生成した java.awt.Graphics オブジェクトを破棄していません。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3432,7 +3432,7 @@
 	</BugPattern>
 
 	<BugPattern type="STB_STACKED_TRY_BLOCKS">
-		<ShortDescription>メソッドは類似の try/catch ブロックをネストしています。</ShortDescription>
+		<ShortDescription>メソッドは 類似の try/catch ブロックをネストしています。</ShortDescription>
 		<LongDescription>メソッド {1} は類似の try/catch ブロックをネストしています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3456,7 +3456,7 @@
 	</BugPattern>
 
 	<BugPattern type="CHTH_COMMONS_HASHCODE_BUILDER_TOHASHCODE">
-		<ShortDescription>メソッドは　HashCodeBuilderのhashCode()を実行した結果を返しています。</ShortDescription>
+		<ShortDescription>メソッドは HashCodeBuilderのhashCode()を実行した結果を返しています。</ShortDescription>
 		<LongDescription>メソッド {1} は　HashCodeBuilderのhashCode()を実行した結果を返しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3467,7 +3467,7 @@
 	</BugPattern>
 
 	<BugPattern type="CSBTS_COMMONS_STRING_BUILDER_TOSTRING">
-		<ShortDescription>メソッドは　ToStringBuilderのappend()の実行をせず、toString()を実行した結果を返しています。</ShortDescription>
+		<ShortDescription>メソッドは ToStringBuilderのappend()の実行をせず、toString()を実行した結果を返しています。</ShortDescription>
 		<LongDescription>メソッド {1} は　ToStringBuilderのappend()の実行をせず、toString()を実行した結果を返しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3478,7 +3478,7 @@
 	</BugPattern>
 
 	<BugPattern type="CCNE_COMPARE_CLASS_EQUALS_NAME">
-		<ShortDescription>メソッドはクラスを比較せず、クラス名を比較しています。</ShortDescription>
+		<ShortDescription>メソッドは クラスを比較せず、クラス名を比較しています。</ShortDescription>
 		<LongDescription>メソッド {1} はクラスを比較せず、クラス名を比較しています。</LongDescription>
 		<Details>
 			<![CDATA[
