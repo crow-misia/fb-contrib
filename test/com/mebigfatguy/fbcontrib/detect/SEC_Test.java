@@ -39,7 +39,7 @@ public class SEC_Test extends BaseFindBugsTest {
 		reporter.printResults();
 
 		expect(reporter, new TreeMap<String, Integer>() {{
-			put("SEC_SIDE_EFFECT_CONSTRUCTOR", 2);
+			put("SEC_SIDE_EFFECT_CONSTRUCTOR", 5);
 		}});
 	}
 

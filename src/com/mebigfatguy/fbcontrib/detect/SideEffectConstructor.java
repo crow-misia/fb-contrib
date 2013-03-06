@@ -18,28 +18,25 @@
  */
 package com.mebigfatguy.fbcontrib.detect;
 
-import org.apache.bcel.classfile.Code;
 import org.apache.bcel.generic.Type;
-
-import com.mebigfatguy.fbcontrib.utils.TernaryPatcher;
 
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
-import edu.umd.cs.findbugs.BytecodeScanningDetector;
 import edu.umd.cs.findbugs.OpcodeStack;
 import edu.umd.cs.findbugs.ba.ClassContext;
+import edu.umd.cs.findbugs.bcel.OpcodeStackDetector;
 
 /**
  * looks for constructors that operate through side effects, specifically
  * constructors that aren't assigned to any variable or field.
  */
-public class SideEffectConstructor extends BytecodeScanningDetector {
+public class SideEffectConstructor extends OpcodeStackDetector {
 
-	private enum State {SAW_NOTHING, SAW_CTOR}
 	private final BugReporter bugReporter;
-	private OpcodeStack stack;
-	private State state;
-	
+
+	private Integer secPC;
+	private int initDepth;
+
 	/**
      * constructs a SEC detector given the reporter to report bugs on
      * 
@@ -48,7 +45,7 @@ public class SideEffectConstructor extends BytecodeScanningDetector {
 	public SideEffectConstructor(BugReporter bugReporter) {
 		this.bugReporter = bugReporter;
 	}
-	
+
 	/**
 	 * overrides the visitor to set up and tear down the opcode stack
 	 * 
@@ -56,23 +53,9 @@ public class SideEffectConstructor extends BytecodeScanningDetector {
 	 */
 	@Override
 	public void visitClassContext(ClassContext classContext) {
-		try {
-			stack = new OpcodeStack();
-			super.visitClassContext(classContext);
-		} finally {
-			stack = null;
-		}
-	}
-	/**
-	 * overrides the visitor to reset the state and reset the opcode stack
-	 * 
-	 * @param obj the context object of the currently parsed code
-	 */
-	@Override
-	public void visitCode(Code obj) {
-		state = State.SAW_NOTHING;
-		stack.resetForMethodEntry(this);
-		super.visitCode(obj);
+		secPC = null;
+		initDepth = -1;
+		super.visitClassContext(classContext);
 	}
 
 	/**
@@ -83,61 +66,70 @@ public class SideEffectConstructor extends BytecodeScanningDetector {
 	 * @param seen the opcode of the currently parse opcode
 	 */
 	@Override
-	public void sawOpcode(int seen) {
-		int pc = 0;
-		try {
-			switch (state) {
-				case SAW_NOTHING:
-					if (seen == INVOKESPECIAL) {
-						String name = getNameConstantOperand();
-						if ("<init>".equals(name)) {
-							String sig = getSigConstantOperand();
-							int numArgs = Type.getArgumentTypes(sig).length;
-							if (stack.getStackDepth() > numArgs) {
-								OpcodeStack.Item caller = stack.getStackItem(numArgs);
-								if (caller.getRegisterNumber() != 0) {
-									state = State.SAW_CTOR;
-									pc = getPC();
-								}
-							}
-						}
-					} else if (seen == RETURN) {
-						int depth = stack.getStackDepth();
-						for (int i = 0; i < depth; i++) {
-							OpcodeStack.Item item = stack.getStackItem(i);
-							Integer secPC = (Integer)item.getUserValue();
-							if (secPC != null) {
-								bugReporter.reportBug(new BugInstance(this, "SEC_SIDE_EFFECT_CONSTRUCTOR", NORMAL_PRIORITY)
-								.addClass(this)
-								.addMethod(this)
-								.addSourceLine(this, secPC.intValue()));
-								break;
-							}
-							
-						}
-					}
-				break;
-				
-				case SAW_CTOR:
-					if (seen == POP || seen == RETURN) {
-						bugReporter.reportBug(new BugInstance(this, "SEC_SIDE_EFFECT_CONSTRUCTOR", NORMAL_PRIORITY)
-															.addClass(this)
-															.addMethod(this)
-															.addSourceLine(this));
-					}
-					state = State.SAW_NOTHING;
-				break;
+	public void sawOpcode(final int seen) {
+		switch (seen) {
+		case INVOKESTATIC:
+		case INVOKEINTERFACE:
+			if (initDepth == 1) {
+				detectBug();
 			}
-		} finally {
-			TernaryPatcher.pre(stack, seen);
-			stack.sawOpcode(this, seen);
-			TernaryPatcher.post(stack, seen);
-			if (pc != 0) {
-				if (stack.getStackDepth() > 0) {
-					OpcodeStack.Item item = stack.getStackItem(0);
-					item.setUserValue(Integer.valueOf(pc));
+			secPC = null;
+			break;
+
+		case INVOKESPECIAL:
+			if (initDepth == 1) {
+				detectBug();
+			}
+
+			final String name = getNameConstantOperand();
+			if ("<init>".equals(name)) {
+				final String sig = getSigConstantOperand();
+				final int numArgs = Type.getArgumentTypes(sig).length;
+				if (stack.getStackDepth() > numArgs) {
+					final OpcodeStack.Item caller = stack.getStackItem(numArgs);
+					if (caller.getRegisterNumber() != 0) {
+						secPC = Integer.valueOf(getPC());
+						initDepth = stack.getStackDepth() - numArgs;
+					}
 				}
+			} else {
+				secPC = null;
 			}
+			break;
+
+		case ASTORE_0:
+		case ASTORE_1:
+		case ASTORE_2:
+		case ASTORE_3:
+		case ASTORE:
+		case AASTORE:
+		case INVOKEVIRTUAL:
+		case ATHROW:
+		case ARETURN:
+		case PUTFIELD:
+		case PUTSTATIC:
+			secPC = null;
+			break;
+
+		case POP:
+		case RETURN:
+			detectBug();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	private void detectBug() {
+		if (secPC != null) {
+			bugReporter.reportBug(new BugInstance(this, "SEC_SIDE_EFFECT_CONSTRUCTOR", NORMAL_PRIORITY)
+			.addClass(this)
+			.addMethod(this)
+			.addSourceLine(this, secPC.intValue()));
+
+			secPC = null;
+			initDepth = -1;
 		}
 	}
 }
