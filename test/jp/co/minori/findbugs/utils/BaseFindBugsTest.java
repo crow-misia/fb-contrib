@@ -136,8 +136,6 @@ public abstract class BaseFindBugsTest {
 		findBugs.finishSettings();
 
 		findBugs.execute();
-
-		reporter.finish();
 	}
 
 	@SuppressWarnings("boxing")
