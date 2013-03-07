@@ -87,17 +87,11 @@ public abstract class BaseFindBugsTest {
 
 		// add AUX Classpath
 		project.addAuxClasspathEntry(System.getProperty("java.home") + "/lib/rt.jar");
-		project.addAuxClasspathEntry("lib/annotations-2.0.1.jar");
-		project.addAuxClasspathEntry("lib/asm-tree-3.3.1.jar");
-		project.addAuxClasspathEntry("lib/findbugs-2.0.1.jar");
-		project.addAuxClasspathEntry("lib/findbugs-bcel-2.0.1.jar");
-		project.addAuxClasspathEntry("samples/lib/backport-util-concurrent-3.1.jar");
-		project.addAuxClasspathEntry("samples/lib/commons-collections-3.2.1.jar");
-		project.addAuxClasspathEntry("samples/lib/commons-lang3-3.1.jar");
-		project.addAuxClasspathEntry("samples/lib/jsp-api-2.2.1.jar");
-		project.addAuxClasspathEntry("samples/lib/junit-4.10.jar");
-		project.addAuxClasspathEntry("samples/lib/log4j-1.2.16.jar");
-		project.addAuxClasspathEntry("samples/lib/servlet-api-3.0.1.jar");
+		for (final String path : System.getProperty("java.class.path").split(";")) {
+			if (path.endsWith(".jar")) {
+				project.addAuxClasspathEntry(path);
+			}
+		}
 
 		System.out.println();
 		for (final Class<?> clazz : classes) {
