@@ -40,8 +40,9 @@ public class CU_Test extends BaseFindBugsTest {
 
 		expect(reporter, new TreeMap<String, Integer>() {{
 			put("CU_CLONE_USABILITY_OBJECT_RETURN", 1);
+			put("CU_CLONE_USABILITY_OTHER_RETURN", 1);
 			put("CU_CLONE_USABILITY_THROWS", 1);
-			put("LEST_LOST_EXCEPTION_STACK_TRACE", 1);
+			put("LEST_LOST_EXCEPTION_STACK_TRACE", 2);
 			put("SIC_INNER_SHOULD_BE_STATIC", 1);
 		}});
 	}
