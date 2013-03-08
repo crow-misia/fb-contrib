@@ -37,9 +37,8 @@ public class UAA_Test extends BaseFindBugsTest {
 		analyze(reporter, Class.forName(getClass().getSimpleName().replace("_Test", "_Sample")));
 
 		reporter.printResults();
-
 		expect(reporter, new TreeMap<String, Integer>() {{
-			put("PSC_PRESIZE_COLLECTIONS", 5);
+			put("PSC_PRESIZE_COLLECTIONS", 4);
 			put("UAA_USE_ADD_ALL", 2);
 			put("UVA_USE_VAR_ARGS", 1);
 			put("WEM_WEAK_EXCEPTION_MESSAGING", 1);
