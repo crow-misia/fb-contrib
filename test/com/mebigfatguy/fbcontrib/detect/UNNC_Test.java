@@ -40,7 +40,7 @@ public class UNNC_Test extends BaseFindBugsTest {
 
 		expect(reporter, new TreeMap<String, Integer>() {{
 			put("RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE", 6);
-			put("UNNC_UNNECESSARY_NEW_NULL_CHECK", 6);
+			put("UNNC_UNNECESSARY_NEW_NULL_CHECK", 7);
 			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 1);
 		}});
 	}

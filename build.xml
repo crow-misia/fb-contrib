@@ -148,10 +148,16 @@
 
 	<target name="compile_samples" depends="-init" description="compiles sample problem files">
 		<javac srcdir="${samples.dir}" destdir="${samples.dir}" source="1.5" target="1.5" deprecation="${javac.deprecation}" debug="${javac.debug}" includeantruntime="false">
+			<exclude name="SJVU_Sample.java" />
+			<exclude name="UNNC_Sample.java" />
 			<classpath refid="fb-contrib.classpath" />
 			<classpath refid="fb-contrib.samples.classpath" />
 		</javac>
-		<delete file="${samples.dir}/SJVU_Sample.class" />
+		<javac srcdir="${samples.dir}" destdir="${samples.dir}" source="1.7" target="1.7" deprecation="${javac.deprecation}" debug="${javac.debug}" includeantruntime="false">
+			<include name="UNNC_Sample.java" />
+			<classpath refid="fb-contrib.classpath" />
+			<classpath refid="fb-contrib.samples.classpath" />
+		</javac>
 		<javac srcdir="${samples.dir}" destdir="${samples.dir}" source="1.4" target="1.4" deprecation="${javac.deprecation}" debug="${javac.debug}" includeantruntime="false">
 			<include name="SJVU_Sample.java" />
 			<classpath refid="fb-contrib.classpath" />

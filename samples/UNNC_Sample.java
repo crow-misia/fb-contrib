@@ -87,4 +87,15 @@ public class UNNC_Sample {
 			l.add("foo");
 		}
 	}
+
+	public void testAutoCloseable() {
+		try (AC ac = new AC()) {
+			System.out.println(ac.hashCode());
+		}
+	}
+
+	private static class AC implements AutoCloseable {
+		public void close() {
+		}
+	}
 }
