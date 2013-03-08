@@ -4,6 +4,10 @@ import java.util.List;
 
 public class SEC_Sample 
 {
+	public SEC_Sample() {
+		this(new ArrayList<SEC_Sample>());
+	}
+
 	public SEC_Sample(List<SEC_Sample> l) 
 	{
 		l.add(this);

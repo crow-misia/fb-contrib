@@ -36,6 +36,7 @@ public class SideEffectConstructor extends OpcodeStackDetector {
 
 	private Integer secPC;
 	private int initDepth;
+	private boolean isNew = false;
 
 	/**
      * constructs a SEC detector given the reporter to report bugs on
@@ -55,6 +56,7 @@ public class SideEffectConstructor extends OpcodeStackDetector {
 	public void visitClassContext(ClassContext classContext) {
 		secPC = null;
 		initDepth = -1;
+		isNew = false;
 		super.visitClassContext(classContext);
 	}
 
@@ -68,6 +70,10 @@ public class SideEffectConstructor extends OpcodeStackDetector {
 	@Override
 	public void sawOpcode(final int seen) {
 		switch (seen) {
+		case NEW:
+			isNew = true;
+			break;
+
 		case INVOKESTATIC:
 		case INVOKEINTERFACE:
 			if (initDepth == 1) {
@@ -82,7 +88,8 @@ public class SideEffectConstructor extends OpcodeStackDetector {
 			}
 
 			final String name = getNameConstantOperand();
-			if ("<init>".equals(name)) {
+			if (isNew && "<init>".equals(name)) {
+				isNew = false;
 				final String sig = getSigConstantOperand();
 				final int numArgs = Type.getArgumentTypes(sig).length;
 				if (stack.getStackDepth() > numArgs) {
