@@ -79,8 +79,8 @@ public abstract class BaseFindBugsTest {
 		}
 	}
 
-	protected void analyze(final BugReporter reporter, final Class<?>... classes) throws IOException, InterruptedException {
-		final ClassLoader cl = getClass().getClassLoader();
+	protected static void analyze(final BugReporter reporter, final Class<?>... classes) throws IOException, InterruptedException {
+		final ClassLoader cl = BaseFindBugsTest.class.getClassLoader();
 
 		final Project project = new Project();
 		project.setProjectName("FindBugs Plugin Test");
@@ -133,7 +133,7 @@ public abstract class BaseFindBugsTest {
 	}
 
 	@SuppressWarnings("boxing")
-	public void expect(final EasyBugReporter reporter, final Map<String, Integer> expected) {
+	public static void expect(final EasyBugReporter reporter, final Map<String, Integer> expected) {
 		final BugCollection collection = reporter.getBugCollection();
 
 		final Map<String, Integer> actual = new TreeMap<String, Integer>();
