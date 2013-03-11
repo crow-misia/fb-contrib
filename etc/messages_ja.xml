@@ -3503,13 +3503,13 @@
     </BugPattern>
     
     <BugPattern type="BRPI_BACKPORT_REUSE_PUBLIC_IDENTIFIERS">
-        <ShortDescription>メソッドは backport concurrency utilsを使用しています。</ShortDescription>
-        <LongDescription>メソッド {1} は backport concurrency utilsを使用しています。</LongDescription>
+        <ShortDescription>メソッドは Backport concurrency utilsを使用しています。</ShortDescription>
+        <LongDescription>メソッド {1} は Backport concurrency utilsを使用しています。</LongDescription>
         <Details>
             <![CDATA[
-            <p> This class usees Backport Utils concurrent classes. Updated/Efficient version of these
-            classes are available in versions of the JDK 5.0 and higher, and these
-            classes should only be used if you are targeting JDK 1.4 and lower.
+            <p>このクラスは、Backport concurrent utils  クラスを使用しています。
+            これらのクラスの更新/効率的なバージョンは、JDK5.0以降のバージョンで利用可能であり、
+            あなたがJDK1.4以前を対象としている場合のみ、これらのクラスを使用して下さい。
             </p>
             ]]>
         </Details>
@@ -3520,9 +3520,9 @@
         <LongDescription>Cloneメソッド {1} は Objectを返すよう宣言しています。</LongDescription>
         <Details>
             <![CDATA[
-            <p> This class implements the Cloneable interface but defines its clone method to return an 
-            Object. Since most likely users of this method will need to cast it to the real type, this will
-            be more painful than necessary. Just declare the return value to be the type of this class.
+            <p>このクラスは、Cloneableインタフェースを実装していますが、Object型インスタンスを返すように、cloneメソッドを定義しています。
+            このメソッドの使用者は、実際の型へキャストする必要があり、これは必要以上に辛いことです。
+            このクラスの型になるように戻り値を宣言して下さい。
             </p>
             ]]>
         </Details>
@@ -3533,11 +3533,10 @@
         <LongDescription>Cloneメソッド {1} は CloneNotSupportedExceptionをスローするよう宣言しています。</LongDescription>
         <Details>
             <![CDATA[
-            <p> This class implements the Cloneable interface but defines its clone method to still return
-            a CloneNotSupportedException. Since you are implementing clone() it would make sense that the method
-            in question will _not_ throw that exception, so annotating your method with it just makes client use
-            of your more painful as they have to handle an exception that will never happen. Just remove the 
-            throws clause from your method.
+            <p>このクラス歯、Cloneable インタフェースを実装していますが、それでも、CloneNotSupportedException を返すように、
+            clone メソッドを定義しています。あなたは、 clone メソッドを実装しているので、問題のメソッドが例外を“スローしない”ことを意味するでしょう。
+            そのため、決して発生しない例外を処理する必要があるため、呼び出し元には辛いことです。
+            あなたのメソッドから throws 節を削除して下さい。
             </p>
             ]]>
         </Details>
@@ -3548,10 +3547,10 @@
         <LongDescription>メソッド {1} はプリミティブ値の配列に対して Array.asList を呼び出しています。</LongDescription>
         <Details>
             <![CDATA[
-            <p> This method passes an array of primitive values to the Array.asList call. As primitive
-            values in arrays aren't automatically promoted to boxed primitives in arrays, the asList call
-            cannot convert this array in a list of boxed primitives. It therefore just creates an array
-            with one item in it, the array itself. This is rarely what is desired.
+            <p>このメソッドは Array.asList 呼び出しへプリミティブ値の配列を渡します。
+            配列内のプリミティブ値が自動的に配列内のラッパー型に昇格されないため、asList 呼び出しは、
+            ラッパー型のリストに、この配列を変換することは出来ません。従って、配列そのものを１つの項目とするリストが作成されます。
+            これは、望まれることは滅多にありません。
             </p>
             ]]>
         </Details>
