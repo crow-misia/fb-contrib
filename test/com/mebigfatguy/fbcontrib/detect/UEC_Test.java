@@ -43,7 +43,7 @@ public class UEC_Test extends BaseFindBugsTest {
 			put("FCBL_FIELD_COULD_BE_LOCAL", 2);
 			put("UEC_USE_ENUM_COLLECTIONS", 2);
 			put("URF_UNREAD_FIELD", 1);
-			put("WOC_WRITE_ONLY_COLLECTION_FIELD", 1);
+			put("WOC_WRITE_ONLY_COLLECTION_FIELD", 2);
 			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 1);
 		}});
 	}

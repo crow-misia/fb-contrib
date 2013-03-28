@@ -65,6 +65,7 @@ public class SPP_Test extends BaseFindBugsTest {
 			put("SPP_STRINGBUILDER_IS_MUTABLE", 2);
 			put("SPP_STUTTERED_ASSIGNMENT", 1);
 			put("SPP_SUSPECT_STRING_TEST", 6);
+			put("SPP_USE_GET0", 1);
 			put("SPP_TEMPORARY_TRIM", 2);
 			put("SPP_USELESS_CASING", 2);
 			put("SPP_USELESS_TRINARY", 1);

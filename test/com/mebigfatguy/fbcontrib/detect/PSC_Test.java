@@ -39,9 +39,9 @@ public class PSC_Test extends BaseFindBugsTest {
 		reporter.printResults();
 
 		expect(reporter, new TreeMap<String, Integer>() {{
-			put("PSC_PRESIZE_COLLECTIONS", 3);
+			put("PSC_PRESIZE_COLLECTIONS", 4);
 			put("SF_SWITCH_NO_DEFAULT", 1);
-			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 5);
+			put("WOC_WRITE_ONLY_COLLECTION_LOCAL", 6);
 		}});
 	}
 
