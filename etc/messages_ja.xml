@@ -2566,6 +2566,28 @@
         </Details>
     </BugPattern>
     
+    <BugPattern type="SPP_USE_GET0">
+        <ShortDescription>Method uses iterator().next() on a List to get the first item</ShortDescription>
+        <LongDescription>Method {1} uses iterator().next() on a List to get the first item</LongDescription>
+        <Details>
+            <![CDATA[
+                This Method calls myList.iterator().next() on a List to get the first item. It is more performant 
+                to just use myList.get(0).
+            ]]>
+        </Details>
+    </BugPattern>
+    
+    <BugPattern type="SPP_DOUBLE_APPENDED_LITERALS">
+        <ShortDescription>メソッドは StringBuilderへ引き続いて ２つのリテラル文字列を追加しています。</ShortDescription>
+        <LongDescription>メソッド {1} は StringBuilderへ引き続いて ２つのリテラル文字列を追加しています。</LongDescription>
+        <Details>
+            <![CDATA[
+                このメソッドは、StringBuilderへ引き続いて ２つのリテラル文字つを追加指定ます。
+                これは、１つのappend呼び出しで行うことが出来、StringBuilderのバッキングストアの中間再分配を回避することが出来ます。
+            ]]>
+            </Details>
+    </BugPattern> 
+    
     <BugPattern type="BAS_BLOATED_ASSIGNMENT_SCOPE">
         <ShortDescription>メソッドは 必要とされるよりも大きなスコープで変数を確保しています。</ShortDescription>
         <LongDescription>メソッド {1} は必要とされるよりも大きなスコープで変数を確保しています。</LongDescription>
@@ -3528,6 +3550,18 @@
         </Details>
     </BugPattern>
     
+    <BugPattern type="CU_CLONE_USABILITY_MISMATCHED_RETURN">
+        <ShortDescription>Cloneメソッドは 自身のクラスとは異なる型を返します。</ShortDescription>
+        <LongDescription>Cloneメソッド {1} は 自身のクラスとは異なる型を返します。</LongDescription>
+        <Details>
+            <![CDATA[
+            <p>このクラスは、Cloneableインタフェースを実装していますが、このクラス自身やクラスが実装している任意のインタフェースとは
+            異なる型を返す cloneメソッドを定義しています。
+            </p>
+            ]]>
+        </Details>
+    </BugPattern>
+    
     <BugPattern type="CU_CLONE_USABILITY_THROWS">
         <ShortDescription>Cloneメソッドは CloneNotSupportedExceptionをスローするよう宣言しています。</ShortDescription>
         <LongDescription>Cloneメソッド {1} は CloneNotSupportedExceptionをスローするよう宣言しています。</LongDescription>
@@ -3576,6 +3610,17 @@
             <p>このメソッドは、このメソッドの任意のパラメータに拘束されていないメソッド・レベルのテンプレートパラメータを宣言しています。
             したがって、コードの読み手を混乱させるため、テンプレートパラメータは検証の無効や型安全性を追加し、削除出来ます。
             </p>
+            ]]>
+        </Details>
+    </BugPattern>
+    
+    <BugPattern type="NPMC_NON_PRODUCTIVE_METHOD_CALL">
+        <ShortDescription>メソッドは 非変化メソッドの戻り値を無視します。</ShortDescription>
+        <LongDescription>メソッド {1} は 非変化メソッドの戻り値を無視します。</LongDescription>
+        <Details>
+            <![CDATA[
+            <p>このメソッドは、変化させないと仮定された共通メソッドの戻り値を無視しています。
+            このメソッドが、実際に呼び出されるオブジェクトを変更しない場合、このメソッドを呼び出す必要がなく、除去することが出来ます。
             ]]>
         </Details>
     </BugPattern>
@@ -3691,4 +3736,5 @@
     <BugCode abbrev="CAAL">Array.asListメソッドの乱用</BugCode>
     <BugCode abbrev="PSC">事前サイズ決定コレクション</BugCode>
     <BugCode abbrev="UMTP">バインドされていないメソッドのテンプレートパラメータ</BugCode>
+    <BugCode abbrev="NPMC">非生産的なメソッド呼び出し</BugCode>
 </MessageCollection>
