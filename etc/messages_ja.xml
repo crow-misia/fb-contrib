@@ -346,9 +346,8 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.AbstractOverriddenMethod">
 		<Details>
 			<![CDATA[
-			<p>Looks for methods that are declared as abstract that override concrete methods in a
-			super class. Doing this casts away the implementation of the super class, and breaks
-			the contract as set forth by the parent class.</p>
+			<p>スーパークラスの具象メソッドをオーバーライドし、abstractとして宣言されたメソッドを探します。
+			これを行うと、すぐにスーパークラスの実装をキャストし、親クラスによって定められた規約を壊します。</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -357,10 +356,9 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.CustomBuiltXML">
 		<Details>
 			<![CDATA[
-			<p>Looks for methods that build xml based strings by concatenation strings
-			and custom values together. Doing so makes brittle code, that is difficult to
-			modify, validate and understand. It is cleaner to create external xml files that are
-			transformed at runtime, using parameters set through Transformer.setParameter.
+			<p>連結文字列と、カスタム値によってXMLベースの文字列を構築しているメソッドを探します。
+			そうすることにより、変更を検証、理解することが困難である脆いコードを作ることになります。
+			Transformer.setParameter を使用することで、パラメータを設定し、実行時に変換する方法は、外部のXMLファイルを作成する良い方法です。</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -369,9 +367,8 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.BloatedSynchronizedBlock">
 		<Details>
 			<![CDATA[
-			<p>Looks for methods that are implemented using synchronized blocks, but are overly
-			synchronized because the beginning of the block only accesses local variables,
-			and not member variables, or this.</p>
+			<p>synchronized ブロックを使用して実装されているメソッドを探しますが、
+			ブロックの先頭は、ローカル変数やメンバー変数ではない変数にアクセスし、過度に同期されます。</p>
 			<p>低速ディテクタです。</p>
 			]]>
 		</Details>
@@ -380,10 +377,9 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.ConstantListIndex">
 		<Details>
 			<![CDATA[
-			<p>Looks for methods that access arrays or classes that implement java.util.List
-			using a constant integer for the index. This is often a typo intented to be a loop
-			variable, but if specific indices mean certain things, perhaps a first class object
-			would be a better choice for a container.</p>
+			<p>インデックスに整数定数を使用した配列や java.util.List を実装したクラスにアクセスしているメソッドを探します。
+			これは、しばしばループ変数であることが誤りですが、特定のインデックスが、特定の物事を意味する場合は、
+			おそらくファーストクラスオブジェクトがコンテナのためのより良い選択になります。</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -440,7 +436,8 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.DateComparison">
 		<Details>
 			<![CDATA[
-			<p>Looks for inefficient comparison of Date objects using two comparisons when one would do.</p>
+			<p>一つはやるだろうというときの2つの比較を使用してDateオブジェクトの非効率的な比較を探します。
+			Looks for inefficient comparison of Date objects using two comparisons when one would do.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -1327,6 +1324,9 @@
 		</Details>
 	</Detector>
 
+	<Detector class="com.mebigfatguy.fbcontrib.detect.OCSDebugger">
+		<Details></Details>
+	</Detector>
 
 	<!-- BugPattern -->
 
@@ -2399,8 +2399,8 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_INVALID_BOOLEAN_NULL_CHECK">
-		<ShortDescription>メソッドは Boolean値のNULLチェックに 誤ったC++スタイルを使用しています。</ShortDescription>
-		<LongDescription>メソッド {1} は　Boolean値のNULLチェックに 誤ったC++スタイルを使用しています。</LongDescription>
+		<ShortDescription>メソッドは Boolean値の nullチェックに 誤ったC++スタイルを使用しています。</ShortDescription>
+		<LongDescription>メソッド {1} は　Boolean値の nullチェックに 誤ったC++スタイルを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method attempts to check for null by just refering to the variable name
@@ -2440,8 +2440,8 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_SUSPECT_STRING_TEST">
-		<ShortDescription>メソッドは 空の文字列を NULL や 通常の文字列 とは異なる扱いをしています。</ShortDescription>
-		<LongDescription>メソッド {1} は空の文字列を NULL や 通常の文字列 とは異なる扱いをしています。</LongDescription>
+		<ShortDescription>メソッドは 空の文字列を null や 通常の文字列 とは異なる扱いをしています。</ShortDescription>
+		<LongDescription>メソッド {1} は空の文字列を null や 通常の文字列 とは異なる扱いをしています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method tests a string, and groups null values with real strings, leaving empty strings as another
@@ -2593,12 +2593,12 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_USE_GET0">
-		<ShortDescription>Method uses iterator().next() on a List to get the first item</ShortDescription>
-		<LongDescription>Method {1} uses iterator().next() on a List to get the first item</LongDescription>
+		<ShortDescription>メソッドは リストの最初の要素を取得するために、 iterator().next() を使用しています。</ShortDescription>
+		<LongDescription>メソッド {1} はリストの最初の要素を取得するために、 iterator().next() を使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This Method calls myList.iterator().next() on a List to get the first item. It is more performant
-			to just use myList.get(0).</p>
+			<p>このメソッドは、リストの最初の要素を取得するために、 iterator().next() を呼び出しています。
+			myList.get(0) を使用する方法がより優れています。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2615,8 +2615,8 @@
 	</BugPattern>
 
 	<BugPattern type="SPP_NULL_BEFORE_INSTANCEOF">
-		<ShortDescription>Method checks a reference for null before calling instanceof</ShortDescription>
-		<LongDescription>Method {1} checks a reference for null before calling instanceof</LongDescription>
+		<ShortDescription>メソッドは instanceof を呼ぶ前に null参照のチェックを行っています。</ShortDescription>
+		<LongDescription>メソッド {1} はinstanceof を呼ぶ前に null参照のチェックを行っています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method checks a reference for null just before seeing if the reference is an instanceof some class.
@@ -2642,7 +2642,7 @@
 	</BugPattern>
 
 	<BugPattern type="SCII_SPOILED_CHILD_INTERFACE_IMPLEMENTOR">
-		<ShortDescription>クラスは無名なスーパークラスのメソッドに頼ることによってインターフェイスを実装しています。</ShortDescription>
+		<ShortDescription>クラスは 無名なスーパークラスのメソッドに頼ることによってインターフェイスを実装しています。</ShortDescription>
 		<LongDescription>クラス {0} は無名なスーパークラスのメソッドに頼ることによってインターフェイスを実装しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2726,7 +2726,7 @@
 	</BugPattern>
 
 	<BugPattern type="MRC_METHOD_RETURNS_CONSTANT">
-		<ShortDescription>プライベートメソッドは１つの定数値だけを返します。</ShortDescription>
+		<ShortDescription>プライベートメソッドは １つの定数値だけを返します。</ShortDescription>
 		<LongDescription>プライベートメソッド {1} は１つの定数値だけを返します。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2750,7 +2750,7 @@
 	</BugPattern>
 
 	<BugPattern type="MOM_MISLEADING_OVERLOAD_MODEL">
-		<ShortDescription>クラスはインスタンスと静的バージョンの両方のメソッドを “オーバーロード”しています。</ShortDescription>
+		<ShortDescription>クラスは インスタンスと静的バージョンの両方のメソッドを “オーバーロード”しています。</ShortDescription>
 		<LongDescription>クラス {0} はインスタンスと静的バージョンの両方のメソッドを “オーバーロード”しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2761,7 +2761,7 @@
 	</BugPattern>
 
 	<BugPattern type="EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS">
-		<ShortDescription>制約のないメソッドはチェックされる例外からチェックされない例外へ変換しています。</ShortDescription>
+		<ShortDescription>制約のないメソッドは チェックされる例外からチェックされない例外へ変換しています。</ShortDescription>
 		<LongDescription>制約のないメソッド {1} はチェックされる例外からチェックされない例外へ変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2773,7 +2773,7 @@
 	</BugPattern>
 
 	<BugPattern type="EXS_EXCEPTION_SOFTENING_HAS_CHECKED">
-		<ShortDescription>制約メソッドはチェックされる例外から、チェックされない例外の代わりに他の許容されたチェックされる例外に変換しています。</ShortDescription>
+		<ShortDescription>制約メソッドは チェックされる例外から、チェックされない例外の代わりに他の許容されたチェックされる例外に変換しています。</ShortDescription>
 		<LongDescription>制約メソッド {1} はチェックされる例外から、チェックされない例外の代わりに他の許容されたチェックされる例外に変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2786,7 +2786,7 @@
 	</BugPattern>
 
 	<BugPattern type="EXS_EXCEPTION_SOFTENING_NO_CHECKED">
-		<ShortDescription>制約されたメソッドはチェックされる例外からチェックされない例外へ変換しています。</ShortDescription>
+		<ShortDescription>制約されたメソッドは チェックされる例外からチェックされない例外へ変換しています。</ShortDescription>
 		<LongDescription>制約されたメソッド {1} はチェックされる例外からチェックされない例外へ変換しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2848,8 +2848,8 @@
 	</BugPattern>
 
 	<BugPattern type="JAO_JUNIT_ASSERTION_ODDITIES_IMPOSSIBLE_NULL">
-		<ShortDescription>メソッドは オートボクシング値がNULL値ではないことを確認しています。</ShortDescription>
-		<LongDescription>メソッド {1} はオートボクシング値がNULL値ではないことを確認しています。</LongDescription>
+		<ShortDescription>メソッドは オートボクシング値が null値ではないことを確認しています。</ShortDescription>
+		<LongDescription>メソッド {1} はオートボクシング値が null値ではないことを確認しています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method asserts that a primitive value that was autoboxed into a boxed primitive was not
@@ -2860,7 +2860,7 @@
 	</BugPattern>
 
 	<BugPattern type="SCA_SUSPICIOUS_CLONE_ALGORITHM">
-		<ShortDescription>Cloneメソッドは元のオブジェクトのメンバーフィールドに新たな値を格納しています。</ShortDescription>
+		<ShortDescription>Cloneメソッドは 元のオブジェクトのメンバーフィールドに新たな値を格納しています。</ShortDescription>
 		<LongDescription>Cloneメソッド {1} は元のオブジェクトのメンバーフィールドに新たな値を格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -2884,8 +2884,8 @@
 	</BugPattern>
 
 	<BugPattern type="SCA_SUSPICIOUS_CLONE_ALGORITHM">
-		<ShortDescription>Clone method stores a new value to member field of source object</ShortDescription>
-		<LongDescription>Clone method {1} stores a new value to member field of source object</LongDescription>
+		<ShortDescription>Cloneメソッドは 元のオブジェクトのメンバフィールドに新しい値を格納すしています。</ShortDescription>
+		<LongDescription>Cloneメソッド {1} は元のオブジェクトのメンバフィールドに新しい値を格納すしています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>The clone method stores a value to a member field of the source object. Normally, all
@@ -2896,8 +2896,8 @@
 	</BugPattern>
 
 	<BugPattern type="WEM_WEAK_EXCEPTION_MESSAGING">
-		<ShortDescription>Method throws exception with static message string</ShortDescription>
-		<LongDescription>Method {1} throws exception with static message string</LongDescription>
+		<ShortDescription>メソッドは 静的なメッセージ文字列と例外をスローします。</ShortDescription>
+		<LongDescription>メソッド {1} は静的なメッセージ文字列と例外をスローします。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method creates and throws an exception using a static string as the exceptions message.
@@ -2985,8 +2985,8 @@
 	</BugPattern>
 
 	<BugPattern type="LO_INCORRECT_NUMBER_OF_ANCHOR_PARAMETERS">
-		<ShortDescription>Method passes an incorrect number of parameters to an SLF4J logging statement</ShortDescription>
-		<LongDescription>Method {1} passes an incorrect number of parameters to an SLF4J logging statement</LongDescription>
+		<ShortDescription>メソッドは SLF4J ロギング ステートメントに、誤った数のパラメータを渡しています。</ShortDescription>
+		<LongDescription>メソッド {1} はSLF4J ロギング ステートメントに、誤った数のパラメータを渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method passes the wrong number of parameters to a slf4j logging method (error, warn, info, debug) based on the number of anchors {} in the
@@ -2996,7 +2996,7 @@
 	</BugPattern>
 
 	<BugPattern type="IICU_INCORRECT_INTERNAL_CLASS_USE">
-		<ShortDescription>クラスは内部APIクラスに依存しています。</ShortDescription>
+		<ShortDescription>クラスは 内部APIクラスに依存しています。</ShortDescription>
 		<LongDescription>クラス {0} は内部APIクラスに依存しています。</LongDescription>
 		<Details>
 			<![CDATA[
@@ -3083,8 +3083,8 @@
 	</BugPattern>
 
 	<BugPattern type="TBP_TRISTATE_BOOLEAN_PATTERN">
-		<ShortDescription>メソッドは Boolean型に NULL値 を返します。</ShortDescription>
-		<LongDescription>メソッド {1} は Boolean型に NULL値 を返します。</LongDescription>
+		<ShortDescription>メソッドは Boolean型に null値を返します。</ShortDescription>
+		<LongDescription>メソッド {1} は Boolean型に null値を返します。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method declares that it returns a Boolean value. However the code
@@ -3233,8 +3233,8 @@
 	</BugPattern>
 
 	<BugPattern type="SNG_SUSPICIOUS_NULL_FIELD_GUARD">
-		<ShortDescription>メソッドは フィールド変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
-		<LongDescription>メソッド {1} はフィールド変数のNULLチェックをし、その変数への値の格納を試みています。</LongDescription>
+		<ShortDescription>メソッドは フィールド変数の nullチェックをし、その変数への値の格納を試みています。</ShortDescription>
+		<LongDescription>メソッド {1} はフィールド変数の nullチェックをし、その変数への値の格納を試みています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method tests a field to make sure it's not null before executing a conditional block of
@@ -3245,8 +3245,8 @@
 	</BugPattern>
 
 	<BugPattern type="SNG_SUSPICIOUS_NULL_LOCAL_GUARD">
-		<ShortDescription>メソッドは ローカル変数のNULLチェックをし、その変数への値の格納を試みています。</ShortDescription>
-		<LongDescription>メソッド {1} はローカル変数のNULLチェックをし、その変数への値の格納を試みています。</LongDescription>
+		<ShortDescription>メソッドは ローカル変数の nullチェックをし、その変数への値の格納を試みています。</ShortDescription>
+		<LongDescription>メソッド {1} はローカル変数の nullチェックをし、その変数への値の格納を試みています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method tests a local variable to make sure it's not null before executing a conditional block of
@@ -3261,7 +3261,9 @@
 		<LongDescription>メソッド {1} は　{2} を呼び出しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>Calling <code>Runtime.exit()</code> or <code>Runtime.halt()</code> shuts down the entire Java virtual machine. This should only been done when it is appropriate. Such calls make it hard or impossible for your code to be invoked by other code. Consider throwing a RuntimeException instead.</p>
+			<p><code>Runtime.exit()</code> または、 <code>Runtime.halt()</code> の呼び出しは、Java仮想マシン全体を停止します。
+			これは、適切であるときにのみ実行されるべきです。このような呼び出しは、あなたのコードを他のコードから実行することを、困難または、不可能にします。
+			代わりに RuntimeException をスローすることを検討してください。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3322,7 +3324,8 @@
 		<LongDescription>メソッド {1} は非推奨な SecureRandomのメソッド {2} を呼び出しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>The <code>SecureRandom()</code> constructors and <code>SecureRandom.getSeed()</code> method are deprecated. Call <code>SecureRandom.getInstance()</code> and <code>SecureRandom.getInstance().generateSeed()</code> instead.</p>
+			<p><code>SecureRandom()</code> コンストラクタと、 <code>SecureRandom.getSeed()</code> メソッドは非推奨です。
+			<code>SecureRandom.getInstance()</code> または、<code>SecureRandom.getInstance().generateSeed()</code> を代わりに呼び出して下さい。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3503,7 +3506,7 @@
 			<p>This method serializes an instance of a non-static inner class. Since this class has a
 			reference to the containing class, this outer class will be serialized as well. This is often
 			not intentional, and will make the amount of data that is serialized much more than is needed.
-			If the outer classes is not desired to be serialized, either make the inner class, static, or
+			If the outer classes is not desired to be serialized, either make the inner class static, or
 			pull it out into a separate "first class" class.</p>
 			]]>
 		</Details>
@@ -3527,8 +3530,8 @@
 		<LongDescription>メソッド {1} はセッターへ同じbeanのゲッターの値を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method retrieves the property of a java bean, only to use it in the setter
-			for the same property of the same bean. This is usually a copy/paste typo.</p>
+			<p>このメソッドは、同じ Beanの同じプロパティにセッターで格納するためだけに、Java Beanのプロパティを取得します。
+			これは、通常 コピー/ペーストの誤植です。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3538,9 +3541,9 @@
 		<LongDescription>メソッド {1} は生成した java.awt.Graphics オブジェクトを破棄していません。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method allocates a java.awt.Graphics object but doesn't dispose of it when done. While
-			the garbage collecter will clean this up, given that a large number of Graphics objects can be
-			created in a short period of time, it is recommended that you explicitly dispose() of them.</p>
+			<p>このメソッドは、java.awt.Graphicsオブジェクトを割り当てますが、使用後に、それを破棄しません。
+			ガベージコレクターは短時間に取得される多数の Graphicsオブジェクトをクリーンアップしますが、
+			それらの dispose() を明示的に行うことをお勧めします。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3550,10 +3553,8 @@
 		<LongDescription>メソッド {1} は類似の try/catch ブロックをネストしています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method declares two try catch blocks one after another, where each
-			catch block catches the same type of exception. They also throw uniformly the
-			same type of exception. These two catch blocks can be combined into one to
-			simplify the method.</p>
+			<p>このメソッドは、同じタイプの例外をキャッチしている 2つのcatchブロックを相次いで宣言しています。
+			またそれらは、一様に例外の同じタイプを投げる。これら2つのcatchブロックは、メソッドを単純化するために1つに結合することができます。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3594,7 +3595,7 @@
 		<Details>
 			<![CDATA[
 			<p>同じクラスローダーによってロードされている場合、JVM上では、２つのクラスは、同じクラス（従って、同じ型）です。
-			そして、同じ完全修飾名を持ちます。 [JVMSpec 1999].
+			そして、同じ完全修飾名を持ちます。 [JVMSpec 1999]
 
 			クラス名の比較は、クラスローダーを無視します。</p>
 			]]>
@@ -3774,7 +3775,7 @@
 	<BugCode abbrev="URV">無関係の戻り値</BugCode>
 	<BugCode abbrev="PIS">不完全なシリアライズの可能性</BugCode>
 	<BugCode abbrev="SCRV">不適切なコンパレータの戻り値</BugCode>
-	<BugCode abbrev="SPP">Sillyness Pot Pourri</BugCode>
+	<BugCode abbrev="SPP">誤りの寄せ集め</BugCode>
 	<BugCode abbrev="BAS">肥大化した割当てスコープ</BugCode>
 	<BugCode abbrev="SCII">役に立たない子インタフェース実装</BugCode>
 	<BugCode abbrev="DWI">繰り返しの間の削除</BugCode>
@@ -3806,7 +3807,7 @@
 	<BugCode abbrev="NSE">非対称なEquals</BugCode>
 	<BugCode abbrev="CVAA">反変配列の割当て</BugCode>
 	<BugCode abbrev="NFF">非機能フィールド</BugCode>
-	<BugCode abbrev="SNG">不適切なNULLガード</BugCode>
+	<BugCode abbrev="SNG">不適切なNullガード</BugCode>
 	<BugCode abbrev="MDM">何も出力しないメソッド</BugCode>
 	<BugCode abbrev="ROOM">オブジェクトメソッドのリフレクション</BugCode>
 	<BugCode abbrev="IPU">不適切なプロパティの使用</BugCode>
