@@ -3574,10 +3574,9 @@
 		<LongDescription>メソッド {1} は副作用のあるコンストラクタを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method creates an object but does not assign this object to any variable or field.
-			This implies that the class operates through side effects in the constructor, which is a
-			bad pattern to use, as it adds unnecessary coupling. Consider pulling the side effect out of
-			the constructor, into a separate method, or into the calling method.</p>
+			<p>このメソッドは、オブジェクトを作成しますが、任意の変数やフィールドにこのオブジェクトを割り当てることはありません。
+            これは、不要なカップリングを追加して、クラスを使う悪いパターンであり、コンストラクタにおける副作用によって動作することを意味します。
+            別々のメソッドにするか、メソッド呼び出しにすることで、副作用をコンストラクタから除くことを検討して下さい。</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3779,8 +3778,8 @@
 		<LongDescription>メソッド {1} は メソッド引数として誤った値を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method passes an invalid constant value to a method parameter that expects only a select number of possible values.
-			This is likely going to cause this method to fail to operate correctly.</p>
+			<p>このメソッドは、可能な値の唯一の選択数を見込んでメソッドパラメータに無効な定数値を渡します。
+            これはおそらく、このメソッドが正しく動作しない原因になるだろう。
 			]]>
 		</Details>
 	</BugPattern>
@@ -3790,21 +3789,19 @@
         <LongDescription>コレクション変数 {2} の名前の一部に コレクションの型と異なる名前が付いています。</LongDescription>
         <Details>
             <![CDATA[
-            <p>This class defines a field or local collection variable with a name that contains a different type
-            of collection in it's name. This is confusing to the reader, and likely caused by a previous refactor of 
-            type, without changing the name.</p>
+            <p>このクラスは、コレクションと異なる型の名前を含むフィールドまたはローカルのコレクション変数を定義しています。
+            これは、読み手を混乱させます。また、おそらく以前の型のリファクタリングの際に、名前の変更をしなかったことによって引き起こされています。</p>
             ]]> 
         </Details>
 	</BugPattern>
 	
 	<BugPattern type="PME_POOR_MANS_ENUM">
-	   <ShortDescription>シンプルなフィールドが enum のように使用されています。</ShortDescription>
-	   <LongDescription>シンプルなフィールド {1} が enum のように使用されています。</LongDescription>
+	   <ShortDescription>単純なフィールドが enum のように使用されています。</ShortDescription>
+	   <LongDescription>単純なフィールド {1} が enum のように使用されています。</LongDescription>
 	   <Details>
 	       <![CDATA[
-	       <p>This field, although defined as a simple variable (int, String, etc) only has a set of constant values
-	       assigned to it. This appears to be used like an enum value, and should probably be defined as such.
-	       </p>
+	       <p>このフィールドには、単純な変数（整数、文字列など）として定義されますが、それだけに割り当てられた定数値のセットがあります。
+           これはenum値のように使用しているように見えます。また、おそらくそのように定義されるべきです。</p>
 	       ]]>
 	   </Details>
 	</BugPattern>
