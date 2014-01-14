@@ -6,9 +6,7 @@
 		<ShortDescription>fb-contribプラグイン</ShortDescription>
 		<Details>
 			<![CDATA[
-			<p>
-			このプラグインは、fb-contribプロジェクトによるFindBugsディテクタを含んでいます。
-			</p>
+			<p>このプラグインは、fb-contribプロジェクトによるFindBugsディテクタを含んでいます。</p>
 			]]>
 		</Details>
 	</Plugin>
@@ -233,11 +231,11 @@
 			<p>同一の名前を持つ int、long、float、doubleパラメータを持つメソッドと、Characterパラメータを持つメソッドを探します。
 			オートボクシングが 1.5 で利用可能になっているため、
 			<pre>
-			test('a')
+				test('a')
 			</pre>
 			を実行すると、
 			<pre>
-			public void test(Character c)
+				public void test(Character c)
 			</pre>
 			が呼び出されるのは当然と思うかもしれません。
 			しかし、実際は代わりにint、long、floatまたはdouble型を持つメソッドが呼び出されます。
@@ -412,8 +410,8 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.SluggishGui">
 		<Details>
 			<![CDATA[
-			<p>Looks for methods that implement awt or swing listeners and perform time
-			consuming operations. Doing these operations in the gui thread will cause the
+			<p>Looks for methods that implement AWT or Swing listeners and perform time
+			consuming operations. Doing these operations in the GUI thread will cause the
 			interface to appear sluggish and non-responsive to the user. It is better to
 			use a separate thread to do the time consuming work so that the user
 			has a better experience.</p>
@@ -456,7 +454,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.JDBCVendorReliance">
 		<Details>
 			<![CDATA[
-			<p>Looks for uses of jdbc vendor specific classes and methods making the database
+			<p>Looks for uses of JDBC vendor specific classes and methods making the database
 			access code non portable.</p>
 			<p>高速ディテクタです。</p>
 			]]>
@@ -532,7 +530,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.UseEnumCollections">
 		<Details>
 			<![CDATA[
-			<p>Looks for use of sets and maps using enums. It is more efficient to use EnumSet or EnumMap</p>
+			<p>Looks for use of sets and maps using enums. It is more efficient to use EnumSet or EnumMap.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -541,7 +539,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.SQLInLoop">
 		<Details>
 			<![CDATA[
-			<p>Looks for the execution of sql queries inside a loop. This pattern tends to be inefficient,
+			<p>Looks for the execution of SQL queries inside a loop. This pattern tends to be inefficient,
 			and often can be improved upon, by collecting all the keys needed for the query and issuing just
 			one query using an in clause with all the keys for all the queries previously needed in the loop.</p>
 			<p>高速ディテクタです。</p>
@@ -576,7 +574,7 @@
 			<![CDATA[
 			<p>Looks for creation of arrays in methods using constant values. These arrays
 			will need to be recreated each time the method is called. These arrays should probably
-			be defined as static fields, instead</p>
+			be defined as static fields, instead.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -641,7 +639,7 @@
 			<![CDATA[
 			<p>Looks for methods that are defined to return Object, and return different types of
 			objects based on different code paths. If this method is not based on a interface or
-			superclass, it is suggested to change the return type to a type that would accomodate
+			superclass, it is suggested to change the return type to a type that would accommodate
 			all kinds of return types.</p>
 			<p>高速ディテクタです。</p>
 			]]>
@@ -683,7 +681,7 @@
 		<Details>
 			<![CDATA[
 			<p><em>このディテクタは、実験中であり、多くの誤検知(FUD(Fear, Uncertainty and Doubt))が発生する可能性があります。</em></p>
-			<p>Looks for assignments to variables in a scope larger than it's use. As long as the evaluation of the assignment
+			<p>Looks for assignments to variables in a scope larger than its use. As long as the evaluation of the assignment
 			does not have side effects, the assignment can be moved into the inner scope where it is used.</p>
 			<p>高速ディテクタです。</p>
 			]]>
@@ -729,7 +727,7 @@
 			<![CDATA[
 			<p>Looks for calls to classes and methods that do not exist in the JDK for which this class is
 			compiled. This can happen if you specify the -source and -target options of the javac compiler, and
-			specify a target that is less than the jdk version of the javac compiler.</p>
+			specify a target that is less than the JDK version of the javac compiler.</p>
 			<p>低速ディテクタです。</p>
 			]]>
 		</Details>
@@ -738,7 +736,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.UseAddAll">
 		<Details>
 			<![CDATA[
-			<p>Looks for loops that transfers the contents of one collection to another. These collection sources might
+			<p>Looks for loops that transfer the contents of one collection to another. These collection sources might
 			be local variables or member fields, including sets, maps key/values, lists, or arrays. It is simpler to
 			just use the addAll method of the collection class. In the case where the source is an array, you can use
 			Arrays.asList(array), and use that as the source to addAll.</p>
@@ -789,7 +787,7 @@
 			concerning are methods constrained by interface or super class contracts
 			not to throw checked exceptions but appear owned by the same author. Next
 			are methods constrained by interface or super class contracts and throw other
-			types of checked exceptions. Most egregious are method not constrained by any interface
+			types of checked exceptions. Most egregious are methods not constrained by any interface
 			or superclass contract.</p>
 			<p>中速ディテクタです。</p>
 			]]>
@@ -804,8 +802,7 @@
 			passed in argument is different than the output, or at least won't be changed.
 			If the purpose of this method is just to modify the parameter, this method should
 			probably be changed to have a void return type. If you must return a variable, perhaps
-			a clone of the parameter should be returned.
-			</p>
+			a clone of the parameter should be returned.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -864,7 +861,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.LoggerOddities">
 		<Details>
 			<![CDATA[
-			<p>Looks for odd patterns of use of Logger classes from either log4j, slf4j or commons logging.</p>
+			<p>Looks for odd patterns of use of Logger classes from either log4j, SLF4j or commons logging.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -873,8 +870,8 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.IncorrectInternalClassUse">
 		<Details>
 			<![CDATA[
-			<p>Looks for classes that rely on internal classes in the various apis or libraries. As these
-			classes are not officially released from the api vendor, they are subject to change or removal, and thus,
+			<p>Looks for classes that rely on internal classes in the various APIs or libraries. As these
+			classes are not officially released from the API vendor, they are subject to change or removal, and thus,
 			should not be counted on.</p>
 			Packages that shouldn't be used are:
 			<ul>
@@ -895,7 +892,7 @@
 			on each item in the collection, this can be costly from a performance point of view.</p>
 			<p>In addition, using a set, or keySet of a map, infers that you will be looking for items based on
 			the value of a collection, which seems dubious at best.</p>
-			<p>Finally, as collections are often modified, This may cause problems if the collection is modified,
+			<p>Finally, as collections are often modified, this may cause problems if the collection is modified,
 			thus changing hashCodes, etc, while the collection is in the set.</p>
 			<p>If you wish to keep a collection of collections, the outer collection should probably be a list
 			to avoid these problems</p>
@@ -919,9 +916,9 @@
 		<Details>
 			<![CDATA[
 			<p>Looks for allocations of objects, and then immediately checking to see if the
-			object is null, or non null. As the new operator is guaranteed to eiher succeed, or throw
+			object is null, or non null. As the new operator is guaranteed to either succeed, or throw
 			an exception, this null check is useless, and denotes a misunderstanding as to how
-			the jvm works. You can remove this guard.</p>
+			the JVM works. You can remove this guard.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -931,8 +928,8 @@
 		<Details>
 			<![CDATA[
 			<p>Looks for classes that appear to implement the old style type safe enum pattern
-			that was used before java added Enum support to the language. Since this class is
-			compiled with java 1.5 or later, it would be simpler to just use java enums</p>
+			that was used before Java added Enum support to the language. Since this class is
+			compiled with Java 1.5 or later, it would be simpler to just use Java enums.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -966,7 +963,7 @@
 			<![CDATA[
 			<p>Looks for methods that return arrays that are allocated but not initialized
 			in this method. While it's possible that the calling method will do the work of
-			initializing the array, it is not a usual pattern, and it suspected that this array
+			initializing the array, it is not a usual pattern, and it is suspected that this array
 			was just forgotten to be initialized.</p>
 			<p>高速ディテクタです。</p>
 			]]>
@@ -1033,15 +1030,15 @@
 		<Details>
 			<![CDATA[
 			<p>Finds contravariant array assignments. Since arrays are mutable data structures, their use
-			must be restricted to covariant or invariant usage</p>
+			must be restricted to covariant or invariant usage.</p>
 
 			<pre>
-			class A {}
-			class B extends A {}
+				class A {}
+				class B extends A {}
 
-			B[] b = new B[2];
-			A[] a = b;
-			a[0] = new A(); // results in ArrayStoreException (Runtime)
+				B[] b = new B[2];
+				A[] a = b;
+				a[0] = new A(); // results in ArrayStoreException (Runtime)
 			</pre>
 			<p>高速ディテクタです。</p>
 			]]>
@@ -1065,7 +1062,7 @@
 			<p>Looks for code that checks to see if a field or local variable is not null,
 			before entering a code block either an if, or while statement, and then reassigns that
 			field or local variable. It is likely that guard should have been to see if that
-			field or local variable is null, not, not null</p>
+			field or local variable is null, not, not null.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -1117,7 +1114,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.WriteOnlyCollection">
 		<Details>
 			<![CDATA[
-			<p>This detector looks for allocations and initializations of java collections, but that are never
+			<p>This detector looks for allocations and initializations of Java collections, but that are never
 			read from or accessed to gain information. This represents a collection of no use, and most probably
 			can be removed. It is similar to a dead local store.</p>
 			<p>高速ディテクタです。</p>
@@ -1129,8 +1126,8 @@
 		<Details>
 			<![CDATA[
 			<p>This detector looks for definitions of methods that have an array as the last parameter.
-			Since this class is compiled with java 1.5 or better, it would be more flexible for clients of this
-			method to define this parameter as a vararg parameter</p>
+			Since this class is compiled with Java 1.5 or better, it would be more flexible for clients of this
+			method to define this parameter as a vararg parameter.</p>
 			<p>高速ディテクタです。</p>
 			]]>
 		</Details>
@@ -1162,7 +1159,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.SuspiciousGetterSetterUse">
 		<Details>
 			<![CDATA[
-			<p>This detector looks for java bean getter-setter use where the value of a property is set
+			<p>This detector looks for Java bean getter-setter use where the value of a property is set
 			with the value retrieved from the same bean's correllary getter, like this:</p>
 			<pre>
 				person.setAge(person.getAge());
@@ -1230,7 +1227,7 @@
 	<Detector class="com.mebigfatguy.fbcontrib.detect.CompareClassNameEquals">
 		<Details>
 			<![CDATA[
-			<p>In a JVM, Two classes are the same class (and consequently the same type) if
+			<p>In a JVM, two classes are the same class (and consequently the same type) if
 			they are loaded by the same class loader, and they have the same fully
 			qualified name [JVMSpec 1999].
 
@@ -1324,7 +1321,43 @@
 		</Details>
 	</Detector>
 
-	<Detector class="com.mebigfatguy.fbcontrib.detect.OCSDebugger">
+	<Detector class="com.mebigfatguy.fbcontrib.detect.InvalidConstantArgument">
+		<Details>
+			<![CDATA[
+			<p>Looks for method calls that take a parameter value that does not match one of the expected
+			values for that parameter. It is likely this parameter value should really be an enum, but predates
+			the addition of enums to java. Passing an invalid value will likely cause problems in the execution of
+			the method.
+			</p>
+			<p>高速ディテクタです。</p>
+			]]>
+		</Details>
+	</Detector>
+	
+	<Detector class="com.mebigfatguy.fbcontrib.detect.CollectionNamingConfusion">
+	   <Details>
+	       <![CDATA[
+	       <p>Looks for fields or local variables that are collections but which names have a different type
+	       of collection in the name. This is confusing, and is probably a left over from a type change, such as
+	       </p>
+	       <p>List<String> mySet;</p>
+			<p>高速ディテクタです。</p>
+	       ]]>
+	   </Details>
+	</Detector>
+	
+	<Detector class="com.mebigfatguy.fbcontrib.detect.PoorMansEnum">
+	   <Details>
+	       <![CDATA[
+	       <p>Looks for fields defined with simple types, (int, String, etc) that are used like an enum. Specifically fields that are 
+	       only assigned a set of constant values. This variable probably should be redefined as an enum.
+	       </p>
+			<p>高速ディテクタです。</p>
+	       ]]>
+	   </Details>
+	</Detector>
+
+	<Detector class="com.mebigfatguy.fbcontrib.debug.OCSDebugger">
 		<Details></Details>
 	</Detector>
 
@@ -1433,10 +1466,10 @@
 		<LongDescription>メソッド {1} が throws節に RuntimeException を宣言しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method declares a RuntimeException derived class in it's throws clause.
+			<p>This method declares a RuntimeException derived class in its throws clause.
 			This may indicate a misunderstanding as to how unchecked exceptions are handled.
 			If is felt that a RuntimeException is so prevalent that it should be declared, it
-			is probably a better idea to prevent the occurance in code.</p>
+			is probably a better idea to prevent the occurrence in code.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -1472,7 +1505,7 @@
 		<LongDescription>コンストラクタ {1} は非finalメソッドへの呼び出しを行なっています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This constructor makes a call to a non-final method. Since this method can be overriden, a subclasses
+			<p>This constructor makes a call to a non-final method. Since this method can be overridden, a subclasses
 			implementation will be executing against an object that has not been initialized at the subclass level.
 			You should mark all methods called from the constructor as final to avoid this problem.</p>
 			]]>
@@ -1511,7 +1544,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method correctly does not write to a parameter. To help document this, and to perhaps
-			help the jvm optimize the invocation of this method, you should consider defining these parameters
+			help the JVM optimize the invocation of this method, you should consider defining these parameters
 			as final.</p>
 			]]>
 		</Details>
@@ -1608,7 +1641,7 @@
 			<![CDATA[
 			<p>This method invokes the methods wait, notify or notifyAll on a Thread instance.
 			Doing so will confuse the internal thread state behaviour causing spurious thread
-			wakeups/sleeps because the internal mechanism also uses the thread instance for it's
+			wakeups/sleeps because the internal mechanism also uses the thread instance for its
 			notifications.</p>
 			]]>
 		</Details>
@@ -1703,7 +1736,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method constructs a Boxed Primitive from a primitive only to call the primitiveValue() method to
-			cast the value to another primitive typee. It is simpler to just use casting</p>
+			cast the value to another primitive type. It is simpler to just use casting</p>
 			<pre>
 				primitive i = new BoxedPrimitive(1.0).primitiveValue();
 			</pre>
@@ -1756,7 +1789,7 @@
 		<LongDescription>メソッド {1} はスーパークラスのメソッドと同一内容で実装されています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method is implemented using an exact copy of it's super class method's
+			<p>This method is implemented using an exact copy of its super class method's
 			implementation, which usually means that this method can just be removed.</p>
 			]]>
 		</Details>
@@ -1802,10 +1835,10 @@
 		<LongDescription>メソッド {1} はアドホックな結合でXML文字列を生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method generates an xml based string by concatenating together various
-			xml fragments, and variable values. Doing so makes the code difficult to read, modify
-			and validate. It is much more clean to built xml structures in external files that are
-			read in and transformed into the final product, thru modification by Transformer.setParameter.</p>
+			<p>This method generates an XML based string by concatenating together various
+			XML fragments, and variable values. Doing so makes the code difficult to read, modify
+			and validate. It is much more clean to built XML structures in external files that are
+			read in and transformed into the final product, through modification by Transformer.setParameter.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -1867,8 +1900,8 @@
 		<LongDescription>メソッド {1} はGUIスレッドで時間のかかる操作を実行しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method implements an awt or swing listener and performs time
-			consuming operations. Doing these operations in the gui thread will cause the
+			<p>This method implements an AWT or Swing listener and performs time
+			consuming operations. Doing these operations in the GU thread will cause the
 			interface to appear sluggish and non-responsive to the user. Consider
 			using a separate thread to do the time consuming work so that the user
 			has a better experience.</p>
@@ -1894,7 +1927,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method compares dates with two comparisons, rather than using the reverse comparison.
-			So This pattern</p>
+			So this pattern</p>
 			<pre>
 				if ((date1.equals( date2 )) || (date1.after( date2 )))
 			</pre>
@@ -1939,7 +1972,7 @@
 		<LongDescription>メソッド {1} はJDBCベンダーの特定のクラスとメソッドを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method uses jdbc vendor specific classes and method to perform database work.
+			<p>This method uses JDBC vendor specific classes and method to perform database work.
 			This makes the code specific to this vendor, and unable to run on other databases.</p>
 			]]>
 		</Details>
@@ -2009,7 +2042,7 @@
 		<LongDescription>タグライブラリ {0} は再利用出来ません。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This Tag library class implements an attribute who's associated backing store field
+			<p>This tag library class implements an attribute who's associated backing store field
 			is modified at another point in the tag library. In order for a taglibrary to be
 			recycleable, only the container is allowed to change this attribute, through the use
 			of the setXXX method of the taglib. By modifying the value programmatically, the
@@ -2058,9 +2091,9 @@
 		<LongDescription>クラス {0} は JComponent を拡張していますが、Accessibleインターフェイスを実装していません。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This class extends the JComponent gui control but does not implement the Accessibility interface.
+			<p>This class extends the JComponent GUI control but does not implement the Accessibility interface.
 			This makes this control unable to be processed by screen readers, etc, for people with reading/vision
-			difficulties</p>
+			difficulties.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2107,7 +2140,7 @@
 		<Details>
 			<![CDATA[
 			<p>This class uses an ordinary set or map collection and uses an enum class as the key type.
-			It is better performant to use the jdk 1.5 EnumSet or EnumMap classes.</p>
+			It is better performant to use the JDK 1.5 EnumSet or EnumMap classes.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2117,7 +2150,7 @@
 		<LongDescription>メソッド {1} はループ内でSQLクエリを実行しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method executes sql queries inside of a loop. This pattern is often inefficient
+			<p>This method executes SQL queries inside of a loop. This pattern is often inefficient
 			as the number of queries may mushroom in fencepost cases. It is probably more performant
 			to loop over the input and collect the key data needed for the query for all items, and
 			issue one query using an in clause, or similar construct, and then loop over this result
@@ -2275,7 +2308,7 @@
 			because this class does not take the responsibility of writing these fields out
 			either using Serializable's writeObject method, or Externalizable's writeExternal
 			method. Therefore when this class is read from a stream, the superclass fields
-			will only be initialized to the values specified in it's default constructor.
+			will only be initialized to the values specified in its default constructor.
 			If possible, change the superclass to implement Serializable, or implement
 			Serializable or Externalizable methods in the child class.</p>
 			]]>
@@ -2311,7 +2344,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method calls intern on a constant string. As constant strings are already interned, this call
-			is superfluous</p>
+			is superfluous.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2356,7 +2389,7 @@
 		<LongDescription>メソッド {1} は Double.NAN と double　を比較しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method compares a douhle or float to the constant Double.NaN or Float.NaN. You should use
+			<p>This method compares a double or float to the constant Double.NaN or Float.NaN. You should use
 			Double.isNaN(d) or Float.isNaN(f) if a primitive; or d.isNaN() or f.isNaN() if a boxed double, instead.</p>
 			]]>
 		</Details>
@@ -2379,7 +2412,7 @@
 		<LongDescription>メソッド {1} は StringBuffer や StringBuilder のコンストラクタに空の文字列を渡しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method calls the StringBuffer of StringBuilder constructor passing in a constant empty string ("").
+			<p>This method calls the StringBuffer or StringBuilder constructor passing in a constant empty string ("").
 			This is the same as calling the default constructor, but makes the code work harder. Consider passing in a
 			default size instead.</p>
 			]]>
@@ -2403,7 +2436,7 @@
 		<LongDescription>メソッド {1} は　Boolean値の nullチェックに 誤ったC++スタイルを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method attempts to check for null by just refering to the variable name
+			<p>This method attempts to check for null by just referring to the variable name
 			as would be done in C++. This ordinarily would be considered a compile error, except the
 			variable in question is a Boolean, which does an auto unbox to boolean.</p>
 			<pre>
@@ -2428,7 +2461,7 @@
 		</Details>
 	</BugPattern>
 
-	<BugPattern type="SPP_USELESS_TRINARY">
+	<BugPattern type="SPP_USELESS_TERNARY">
 		<ShortDescription>メソッドは true や false へ boolean値をキャストするトライナリ演算子を使用しています。</ShortDescription>
 		<LongDescription>メソッド {1} は true や false へ boolean値をキャストするトライナリ演算子を使用しています。</LongDescription>
 		<Details>
@@ -2476,7 +2509,7 @@
 			<![CDATA[
 			<p>This method passes a non calendar object to the java.util.Calendar.after or java.util.Calendar.before methods.
 			Even though these methods take an Object as a parameter type, only Calendar type objects are supported, otherwise
-			false is returned</p>
+			false is returned.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2486,7 +2519,7 @@
 		<LongDescription>メソッド {1} は containsKey を使用せずに、containsを呼ぶために keySet() を呼んでいます。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method calls mySet.keySet().contains("foo") when mySet.containsKey("foo") is simpler</p>
+			<p>This method calls mySet.keySet().contains("foo") when mySet.containsKey("foo") is simpler.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2497,7 +2530,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method calls the size() method on a collection and compares the result to zero to see if the collection
-			is empty. For better code clarity, it is better to just use col.isEmpty() or !col.isEmpty()</p>
+			is empty. For better code clarity, it is better to just use col.isEmpty() or !col.isEmpty().</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2509,7 +2542,7 @@
 			<![CDATA[
 			<table>
 				<tr><td>This method uses</td></tr>
-				<tr><td>String prop = System.getProperties().getProperty("foo");</td></tr
+				<tr><td>String prop = System.getProperties().getProperty("foo");</td></tr>
 				<tr><td>instead of simply using</td></tr>
 				<tr><td>String prop = System.getProperty("foo");</td></tr>
 			</table>
@@ -2571,8 +2604,8 @@
 		<Details>
 			<![CDATA[
 			<p>This method calls trim() on a String without assigning the new string to another variable.
-			It then calls length() or equals on this trimmed string. If trimming the string was important
-			for determining it's length of it's equality, it should be trimmed when you actually go to use it.
+			It then calls length() or equals() on this trimmed string. If trimming the string was important
+			for determining it's length of its equality, it should be trimmed when you actually go to use it.
 			It would make more sense to first trim the String, store the trimmed value in a variable, and then
 			continue to test and use that trimmed string.</p>
 			]]>
@@ -2625,6 +2658,18 @@
 		</Details>
 	</BugPattern>
 
+	<BugPattern type="SPP_NON_USEFUL_TOSTRING">
+	   <ShortDescription>Method calls toString() on an instance of a class that hasn't overridden toString()</ShortDescription>
+	   <LongDescription>Method {1} calls toString() on an instance of a class that hasn't overridden toString()</LongDescription>
+	   <Details>
+	       <![CDATA[
+	       <p>This method calls toString() on an object that hasn't overridden the toString() method, and thus relies on
+	       the version found in java.lang.Object. This string is just a raw display of the object's class and location, and
+	       provides no information about the information of use. You should implement toString in this class.
+	       ]]>
+	   </Details>
+	</BugPattern>
+
 	<BugPattern type="BAS_BLOATED_ASSIGNMENT_SCOPE">
 		<ShortDescription>メソッドは 必要とされるよりも大きなスコープで変数を確保しています。</ShortDescription>
 		<LongDescription>メソッド {1} は必要とされるよりも大きなスコープで変数を確保しています。</LongDescription>
@@ -2673,7 +2718,7 @@
 		<LongDescription>メソッド {1} は繰り返しの最中にコレクションの要素を変更しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method modifies the contents of a collection using the collection api methods, while
+			<p>This method modifies the contents of a collection using the collection API methods, while
 			at the same time iterating across the collection. Doing this will invalidate the iterator, and further
 			use of it, will cause ConcurrentModificationExceptions to be thrown.</p>
 			]]>
@@ -2685,7 +2730,7 @@
 		<LongDescription>メソッド {1} は文字列のトークン化を使用してい文字列配列を生成しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method uses a StringTokenizer to split up a String and then walks thru the
+			<p>This method uses a StringTokenizer to split up a String and then walks through the
 			separated elements and builds an array from these enumerated values. It is simpler
 			and easier to use the String.split method.</p>
 			<p>PLEASE NOTE: String.split will return an array of 1 element when passed the
@@ -2705,7 +2750,7 @@
 		<LongDescription>メソッド {1} は クラスがコンパイルされたバージョンの rt.jar に存在しないクラスまたはメソッドを使用しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This method calls a method that does not exist, on a class that does not exist in the jdk that
+			<p>This method calls a method that does not exist, on a class that does not exist in the JDK that
 			this class has been compiled for. This can happen if you compile the class specifying the -source and
 			-target options, and use a version that is before the version of the compiler's JDK.</p>
 			]]>
@@ -2720,7 +2765,7 @@
 			<p>This method uses a simple for loop to copy the contents of a set, list, map key/value, array or other collection
 			to another collection. It is simpler and more straight forward to just call the addAll method of the destination collection
 			passing in the source collection. In the case that the source is an array, you can use Array.asList method to massage the array
-			into a collection</p>
+			into a collection.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -2731,7 +2776,7 @@
 		<Details>
 			<![CDATA[
 			<p>This private or static method only returns one constant value. As this method is private or static,
-			it's behavior can't be overridden, and thus the return of a constant value seems dubious.
+			its behavior can't be overridden, and thus the return of a constant value seems dubious.
 			Either the method should be changed to return no value, or perhaps another return value
 			was expected to be returned in another code path in this method.</p>
 			]]>
@@ -2860,8 +2905,8 @@
 	</BugPattern>
 
 	<BugPattern type="SCA_SUSPICIOUS_CLONE_ALGORITHM">
-		<ShortDescription>Cloneメソッドは 元のオブジェクトのメンバーフィールドに新たな値を格納しています。</ShortDescription>
-		<LongDescription>Cloneメソッド {1} は元のオブジェクトのメンバーフィールドに新たな値を格納しています。</LongDescription>
+	        <ShortDescription>Cloneメソッドは 元のオブジェクトのメンバーフィールドに新たな値を格納しています。</ShortDescription>
+	        <LongDescription>Cloneメソッド {1} は元のオブジェクトのメンバーフィールドに新たな値を格納しています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>This method uses a java assert to assure that a certain state is in effect. As this is
@@ -2978,7 +3023,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method attempts to use an SLF4J logger to log a parameterized expression using formatting anchors.
-			However, slf4j uses simple non numbered anchors such as {}, rather than anchors with digits in them as the
+			However, SLF4j uses simple non numbered anchors such as {}, rather than anchors with digits in them as the
 			code uses. Thus no parameter replacement will occur.</p>
 			]]>
 		</Details>
@@ -2994,14 +3039,26 @@
 			]]>
 		</Details>
 	</BugPattern>
+	
+	<BugPattern type="LO_EXCEPTION_WITH_LOGGER_PARMS">
+       <ShortDescription>Method creates exception with logger parameter markers in message</ShortDescription>
+       <LongDescription>Method {1} creates exception with logger parameter markers in message</LongDescription>
+	   <Details>
+	       <![CDATA[
+	       <pThis method creates an standard exception passing a message string which contains an slf4j style
+	       parameter marker '{}'. This marker will not be translated as it is not processed by the Exception class.
+	       </p>
+	       ]]>
+	   </Details>
+	</BugPattern>
 
 	<BugPattern type="IICU_INCORRECT_INTERNAL_CLASS_USE">
 		<ShortDescription>クラスは 内部APIクラスに依存しています。</ShortDescription>
 		<LongDescription>クラス {0} は内部APIクラスに依存しています。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p>This class makes use of internal api classes. As these
-			classes are not documented, nor externally released as part of the api, they are subject
+			<p>This class makes use of internal API classes. As these
+			classes are not documented, nor externally released as part of the API, they are subject
 			to change or removal. You should not be using these classes.</p>
 			Packages that shouldn't be used are:
 			<ul>
@@ -3063,7 +3120,7 @@
 		<Details>
 			<![CDATA[
 			<p>This class appears to implement the old style type safe enum pattern that was used in place of
-			real enums. Since this class is compiled with java 1.5 or better, it would be simpler and more
+			real enums. Since this class is compiled with Java 1.5 or better, it would be simpler and more
 			easy to understand if it was just switched over to an enum.</p>
 			]]>
 		</Details>
@@ -3126,7 +3183,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method sets or gets an HttpSession attribute with a parmeter name that was used in other locations
-			As these methods are for debugging/logging purposes, it shouldn't be the basis of core logic in your code.</p>
+			but with a different casing. As HttpSession attribute are case sensitive, this will be very confusing.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3137,7 +3194,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method fetches an HttpServletRequest parameter with a parameter name that was used in other locations
-			As these methods are for debugging/logging purposes, it shouldn't be the basis of core logic in your code.</p>
+			but with a different casing. As HttpServletRequest parameters are case sensitive, this will be very confusing.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3189,11 +3246,11 @@
 			must be restricted to covariant or invariant usage</p>
 
 			<pre>
-			class A {}
-			class B extends A {}
+				class A {}
+				class B extends A {}
 
-			B[] b = new B[2];
-			A[] a = b;
+				B[] b = new B[2];
+				A[] a = b;
 			</pre>
 			]]>
 		</Details>
@@ -3208,12 +3265,12 @@
 			data structures, their use must be restricted to covariant or invariant usage</p>
 
 			<pre>
-			class A {}
-			class B extends A {}
+				class A {}
+				class B extends A {}
 
-			B[] b = new B[2];
-			A[] a = b;
-			a[0] = new A(); // results in ArrayStoreException (Runtime)
+				B[] b = new B[2];
+				A[] a = b;
+				a[0] = new A(); // results in ArrayStoreException (Runtime)
 			</pre>
 			]]>
 		</Details>
@@ -3375,7 +3432,7 @@
 		<LongDescription>メソッド {1} は Condition.signalAll() の代わりに Condition.signal() を呼んでいます。</LongDescription>
 		<Details>
 			<![CDATA[
-			<p><code>Condition.signalAll()</code> is prefered over <code>Condition.signal()</code>. Calling <code>signal()</code> only wakes up one thread, meaning that the thread woken up might not be the one waiting for the condition that the caller just satisfied.</p>
+			<p><code>Condition.signalAll()</code> is preferred over <code>Condition.signal()</code>. Calling <code>signal()</code> only wakes up one thread, meaning that the thread woken up might not be the one waiting for the condition that the caller just satisfied.</p>
 			]]>
 		</Details>
 	</BugPattern>
@@ -3428,7 +3485,7 @@
 		<Details>
 			<![CDATA[
 			<p>This method places non-String objects into a Properties object. As the Properties object
-			is intented to be a String to String map, putting non String objects is wrong, and takes advantage
+			is intended to be a String to String map, putting non String objects is wrong, and takes advantage
 			of a design flaw in the Properties class by deriving from Hashtable instead of using aggregation.
 			If you want a collection that holds other types of objects, use a Hashtable, or better still newer collections
 			like HashMap or TreeMap.</p>
@@ -3664,15 +3721,15 @@
 	</BugPattern>
 
 	<BugPattern type="PSC_PRESIZE_COLLECTIONS">
-		<ShortDescription>メソッドは Collection の明示的なサイズ指定をせず確保しています。</ShortDescription>
-		<LongDescription>メソッド {1} は Collection の明示的なサイズ指定をせず確保しています。</LongDescription>
+		<ShortDescription>メソッドは コレクション の明示的なサイズ指定をせず確保しています。</ShortDescription>
+		<LongDescription>メソッド {1} は コレクション の明示的なサイズ指定をせず確保しています。</LongDescription>
 		<Details>
 			<![CDATA[
 			<p>このメソッドは、予めどの程度の要素をコレクションに格納するか知っており(または、少なくとも合理的な推測)、
 			不必要にコレクションの再確保を引き起こすにも関わらず、デフォルトのコンストラクタを使用してコレクションを割り当てています。</p>
 			]]>
 		</Details>
-	</BugPattern>"
+	</BugPattern>
 
 	<BugPattern type="UMTP_UNBOUND_METHOD_TEMPLATE_PARAMETER">
 		<ShortDescription>メソッドが バインドされていないメソッドのテンプレートを宣言しています。</ShortDescription>
@@ -3715,6 +3772,41 @@
 			<p>このメソッドは、領域を確保していない配列へ配列要素の格納を試みています。</p>
 			]]>
 		</Details>
+	</BugPattern>
+
+	<BugPattern type="ICA_INVALID_CONSTANT_ARGUMENT">
+		<ShortDescription>メソッドは メソッド引数として誤った値を渡しています。</ShortDescription>
+		<LongDescription>メソッド {1} は メソッド引数として誤った値を渡しています。</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>This method passes an invalid constant value to a method parameter that expects only a select number of possible values.
+			This is likely going to cause this method to fail to operate correctly.</p>
+			]]>
+		</Details>
+	</BugPattern>
+	
+	<BugPattern type="CNC_COLLECTION_NAMING_CONFUSION">
+	    <ShortDescription>コレクション変数の名前の一部に コレクションの型と異なる名前が付いています。</ShortDescription>
+        <LongDescription>コレクション変数 {2} の名前の一部に コレクションの型と異なる名前が付いています。</LongDescription>
+        <Details>
+            <![CDATA[
+            <p>This class defines a field or local collection variable with a name that contains a different type
+            of collection in it's name. This is confusing to the reader, and likely caused by a previous refactor of 
+            type, without changing the name.</p>
+            ]]> 
+        </Details>
+	</BugPattern>
+	
+	<BugPattern type="PME_POOR_MANS_ENUM">
+	   <ShortDescription>シンプルなフィールドが enum のように使用されています。</ShortDescription>
+	   <LongDescription>シンプルなフィールド {1} が enum のように使用されています。</LongDescription>
+	   <Details>
+	       <![CDATA[
+	       <p>This field, although defined as a simple variable (int, String, etc) only has a set of constant values
+	       assigned to it. This appears to be used like an enum value, and should probably be defined as such.
+	       </p>
+	       ]]>
+	   </Details>
 	</BugPattern>
 
 	<!-- BugCode -->
@@ -3830,4 +3922,7 @@
 	<BugCode abbrev="UMTP">バインドされていないメソッドのテンプレートパラメータ</BugCode>
 	<BugCode abbrev="NPMC">非生産的なメソッド呼び出し</BugCode>
 	<BugCode abbrev="AIOB">配列インデックス範囲外</BugCode>
+	<BugCode abbrev="ICA">誤った定数引数</BugCode>
+	<BugCode abbrev="CNC">コレクション名の混在</BugCode>
+	<BugCode abbrev="PME">貧弱な列挙型</BugCode>
 </MessageCollection>
